@@ -170,6 +170,27 @@
       color: var(--text-muted);
       margin-top: 40px;
     }
+
+    /* 画像を親要素の枠内に収める設定 */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 12px 0;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    /* キャプチャ画像用のサイズ調整クラス（お好みで） */
+    .img-preview {
+      max-width: 480px; /* 最大横幅を制限 */
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 16px auto; /* 中央寄せ */
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
   </style>
 </head>
 <body>
@@ -192,8 +213,8 @@
       <ol>
         <li><a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">Cloudflare 登録ページ</a> を開きます。</li>
         <li><strong>メールアドレス</strong> と <strong>パスワード</strong>（8文字以上、大文字・数字・記号を含む）を入力し、<br>「Sign in」をクリックします。</li>
+        <img class="img" src="./assets/画像1.png" alt="画像1">
         <li>登録メールアドレス宛に届く確認メール内の認証リンクをクリックし、アドレス確認を完了します。</li>
-        <img src="./assets/画像1.png" alt="画像1">
       </ol>
       <div class="note">※メールアドレスの認証を行わないと、メンバー招待機能が利用できません。</div>
     </div>
