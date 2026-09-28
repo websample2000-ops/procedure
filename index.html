@@ -275,8 +275,8 @@
       <h3 class="step-title">① アカウント作成手順</h3>
       <ol>
         <li><a href="https://github.com/signup" target="_blank" rel="noopener">GitHub 公式登録ページ</a> を開きます。</li>
-        <li>画面の指示に従い、<strong>メールアドレス</strong>、<strong>パスワード</strong>、<strong>ユーザー名（英数字）</strong> を入力します。</li>
-        <li>届いたメール記載の8桁の認証コードを入力してアカウント作成を完了します。</li>
+        <li><strong>Continue with Google</strong> を選択し、サインアップするGoogleアカウントを選択します。</li>
+        <img class="img" src="./assets/画像10.png" alt="画像10">
       </ol>
     </div>
 
@@ -284,10 +284,15 @@
       <br>
       <h3 class="step-title">② 空リポジトリの作成手順</h3>
       <ol>
-        <li>GitHub右上の「＋」アイコン → <strong>「New repository」</strong> をクリックします。</li>
+        <li>画面左側にある<strong>「Create repository」</strong><br>または、GitHub右上の「＋」アイコン → <strong>「New repository」</strong> をクリックします。</li>
+        <img class="img" src="./assets/画像11.png" alt="画像11">
+        <br>
         <li><strong>Repository name</strong>（リポジトリ名）に任意の名前（例: <code>official-site</code>）を入力します。</li>
-        <li>公開設定で <strong>「Public」</strong>（またはPrivate）を選択します。</li>
-        <li>ファイル（READMEや.gitignore）の初期化チェックはすべて<strong>空のまま</strong>にし、最下部の <strong>「Create repository」</strong> をクリックします。</li>
+          <div class="note">※リポジトリ名は公開されないので任意の名前で問題ありません。<br>※URL名になるのはCloudflareのリポジトリ名になります。</div>
+        <li>公開設定で <strong>「Private」</strong>を選択します。</li>
+          <div class="note">※「Public」で設定してしまっても、後で「Private」に変更可能です。</div>
+        <li>ファイル（READMEや.gitignore）の初期化チェックはすべて<strong>デフォルトのまま</strong>にし、最下部の <strong>「Create repository」</strong> をクリックします。</li>
+        <img class="img" src="./assets/画像12.png" alt="画像12">
       </ol>
     </div>
 
@@ -296,11 +301,16 @@
       <h3 class="step-title">③ 作業アカウントの招待と権限設定（Admin）</h3>
       <ol>
         <li>作成したリポジトリ画面上部のタブから <strong>「Settings（設定）」</strong>（歯車マーク）を開きます。</li>
+        <img class="img" src="./assets/画像13.png" alt="画像13">
+        <br>
         <li>左側メニュー「Access」配下の <strong>「Collaborators」</strong> を選択します（パスワード再確認が出た場合は入力します）。</li>
-        <li><strong>「Add people」</strong> をクリックし、作業者の <strong>GitHubユーザー名</strong> または <strong>メールアドレス</strong> を検索して追加します。</li>
-        <li>追加された作業者の権限（Role）を <code>Write</code> から <strong><code>Admin</code>（管理者）</strong> に変更します。
-          <div class="note">※GitHub Pagesの有効化、ビルドトリガー、環境変数設定など、公開に必要な内部設定をすべて代行するために「Admin」権限が必要です。（リポジトリ自体の完全削除権限は所有者本人のみに限定されています）</div>
-        </li>
+        <img class="img" src="./assets/画像14.png" alt="画像14">
+        <br>
+        <li><strong>「Add people」</strong> をクリックし、作業者の <strong>メールアドレス</strong> を入力し、<strong>「Add [入力したメールアドレス]」</strong>をクリックします。</li>
+          <div class="note">招待アドレス：urukanero.works@gmail.com</div>
+        <img class="img" src="./assets/画像15.png" alt="画像15">
+        <img class="img" src="./assets/画像16.png" alt="画像16">
+        <div class="note">※招待完了後、ご連絡いただけると幸いです。</div>
       </ol>
     </div>
 
