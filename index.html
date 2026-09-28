@@ -1,0 +1,338 @@
+ご要望の要件（Cloudflareの権限・作成、GitHubの空リポジトリ作成＋Admin権限、Firebaseの認証設定、および**納品完了後の各作業アカウント削除手順**）をすべて網羅した完全版の単一HTMLコードです。そのままコピーして `.html` ファイルとして保存・共有できます。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webサイト構築・保守 アカウント準備＆設定マニュアル</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --accent-sub: #79c0ff;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --code-bg: #21262d;
+      --danger: #f85149;
+      --danger-bg: rgba(248, 81, 73, 0.1);
+      --tag-cf: #f38020;
+      --tag-gh: #238636;
+      --tag-fb: #ffca28;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 32px 16px;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .lead {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .service-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .service-title {
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .badge.cf { background-color: var(--tag-cf); }
+    .badge.gh { background-color: var(--tag-gh); }
+    .badge.fb { background-color: #d99b00; }
+
+    .step-section {
+      margin-top: 24px;
+    }
+
+    .step-title {
+      font-size: 1.05rem;
+      color: var(--accent-sub);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-title.removal {
+      color: #ff7b72;
+    }
+
+    ol {
+      padding-left: 20px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: #ff7b72;
+    }
+
+    .note {
+      background: rgba(88, 166, 255, 0.08);
+      border-left: 4px solid var(--accent);
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-radius: 0 4px 4px 0;
+      margin: 8px 0 12px;
+    }
+
+    .note-danger {
+      background: var(--danger-bg);
+      border-left: 4px solid var(--danger);
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: #ff7b72;
+      border-radius: 0 4px 4px 0;
+      margin: 8px 0 12px;
+    }
+
+    .removal-box {
+      border: 1px dashed #da3633;
+      background: rgba(248, 81, 73, 0.04);
+      padding: 16px;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Webサイト管理・共同作業用 アカウント準備マニュアル</h1>
+    <p class="lead">Webサイトの構築・デプロイ・更新保守に必要な各クラウドサービスの設定手順です。すべて無料プランの範囲で運用可能です。作業完了後に作業者の権限を解除する手順も記載しています。</p>
+  </header>
+
+  <!-- 1. Cloudflare -->
+  <article class="service-card">
+    <div class="service-header">
+      <span class="badge cf">インフラ・ホスティング</span>
+      <h2 class="service-title">1. Cloudflare</h2>
+    </div>
+
+    <div class="step-section">
+      <h3 class="step-title">① アカウント作成手順</h3>
+      <ol>
+        <li><a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">Cloudflare 登録ページ</a> を開きます。</li>
+        <li><strong>メールアドレス</strong> と <strong>パスワード</strong>（8文字以上、大文字・数字・記号を含む）を入力し、「サインアップ」をクリックします。</li>
+        <li>登録メールアドレス宛に届く確認メール内の認証リンクをクリックし、アドレス確認を完了します。</li>
+      </ol>
+      <div class="note">※メールアドレスの認証を行わないと、メンバー招待機能が利用できません。</div>
+    </div>
+
+    <div class="step-section">
+      <h3 class="step-title">② 作業アカウントの招待と権限設定（Administrator）</h3>
+      <ol>
+        <li><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">Cloudflare ダッシュボード</a> にログインします。</li>
+        <li>左側メニューの <strong>「管理（Manage Account）」</strong> → <strong>「メンバー（Members）」</strong> を開きます。</li>
+        <li><strong>「メンバーを招待（Invite members）」</strong> をクリックします。</li>
+        <li>作業者のメールアドレスを入力します。</li>
+        <li>ロール（権限）の選択で <strong>「管理者（Administrator）」</strong> を選択します。
+          <div class="note">※作業者がPagesの新規デプロイ、Workers・D1データベースの作成をゼロから代行できるようにするため、必ず「Administrator」を指定してください。（クレジットカード情報やプラン変更権限は所有者にしか無いため、勝手に課金される心配はありません）</div>
+        </li>
+        <li><strong>「招待を送信」</strong> をクリックします。</li>
+      </ol>
+    </div>
+
+    <!-- 削除手順 -->
+    <div class="removal-box">
+      <h3 class="step-title removal">【納品・作業完了後】作業アカウントの削除手順</h3>
+      <ol>
+        <li>ダッシュボード左側メニュー <strong>「管理（Manage Account）」</strong> → <strong>「メンバー（Members）」</strong> を開きます。</li>
+        <li>メンバー一覧から作業者のメールアドレスを探し、右端にある <strong>「編集（Edit）」</strong> またはメニューアイコンをクリックします。</li>
+        <li><strong>「メンバーを削除（Remove）」</strong> をクリックして確認モーダルで承認すると、作業者のアクセス権が即座に解除されます。</li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- 2. GitHub -->
+  <article class="service-card">
+    <div class="service-header">
+      <span class="badge gh">ソースコード管理・Pages</span>
+      <h2 class="service-title">2. GitHub / GitHub Pages</h2>
+    </div>
+
+    <div class="step-section">
+      <h3 class="step-title">① アカウント作成手順</h3>
+      <ol>
+        <li><a href="https://github.com/signup" target="_blank" rel="noopener">GitHub 公式登録ページ</a> を開きます。</li>
+        <li>画面の指示に従い、<strong>メールアドレス</strong>、<strong>パスワード</strong>、<strong>ユーザー名（英数字）</strong> を入力します。</li>
+        <li>届いたメール記載の8桁の認証コードを入力してアカウント作成を完了します。</li>
+      </ol>
+    </div>
+
+    <div class="step-section">
+      <h3 class="step-title">② 空リポジトリの作成手順</h3>
+      <ol>
+        <li>GitHub右上の「＋」アイコン → <strong>「New repository」</strong> をクリックします。</li>
+        <li><strong>Repository name</strong>（リポジトリ名）に任意の名前（例: <code>official-site</code>）を入力します。</li>
+        <li>公開設定で <strong>「Public」</strong>（またはPrivate）を選択します。</li>
+        <li>ファイル（READMEや.gitignore）の初期化チェックはすべて<strong>空のまま</strong>にし、最下部の <strong>「Create repository」</strong> をクリックします。</li>
+      </ol>
+    </div>
+
+    <div class="step-section">
+      <h3 class="step-title">③ 作業アカウントの招待と権限設定（Admin）</h3>
+      <ol>
+        <li>作成したリポジトリ画面上部のタブから <strong>「Settings（設定）」</strong>（歯車マーク）を開きます。</li>
+        <li>左側メニュー「Access」配下の <strong>「Collaborators」</strong> を選択します（パスワード再確認が出た場合は入力します）。</li>
+        <li><strong>「Add people」</strong> をクリックし、作業者の <strong>GitHubユーザー名</strong> または <strong>メールアドレス</strong> を検索して追加します。</li>
+        <li>追加された作業者の権限（Role）を <code>Write</code> から <strong><code>Admin</code>（管理者）</strong> に変更します。
+          <div class="note">※GitHub Pagesの有効化、ビルドトリガー、環境変数設定など、公開に必要な内部設定をすべて代行するために「Admin」権限が必要です。（リポジトリ自体の完全削除権限は所有者本人のみに限定されています）</div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- 削除手順 -->
+    <div class="removal-box">
+      <h3 class="step-title removal">【納品・作業完了後】作業アカウントの削除手順</h3>
+      <ol>
+        <li>該当リポジトリの <strong>「Settings（設定）」</strong> → <strong>「Collaborators」</strong> を開きます。</li>
+        <li>一覧に表示されている作業者の名前の右側にあるゴミ箱アイコン（<strong>「Remove」</strong>）をクリックします。</li>
+        <li>確認ポップアップで削除を実行すると、作業者はリポジトリの編集・閲覧ができなくなります。</li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- 3. Firebase -->
+  <article class="service-card">
+    <div class="service-header">
+      <span class="badge fb">認証・セキュリティ</span>
+      <h2 class="service-title">3. Firebase（Google認証）</h2>
+    </div>
+
+    <div class="step-section">
+      <h3 class="step-title">① プロジェクト作成手順</h3>
+      <ol>
+        <li>Googleアカウントにログインした状態で <a href="https://console.firebase.google.com/" target="_blank" rel="noopener">Firebase Console</a> にアクセスします。</li>
+        <li><strong>「プロジェクトを追加」</strong> を選択し、任意のプロジェクト名を入力して「続行」を押します。</li>
+        <li>Google アナリティクス設定画面が出た場合は「無効（または有効）」を選択し、<strong>「プロジェクトを作成」</strong> をクリックします。</li>
+      </ol>
+    </div>
+
+    <div class="step-section">
+      <h3 class="step-title">② Google認証の有効化手順</h3>
+      <ol>
+        <li>ダッシュボード左メニューの <strong>「構築（Build）」</strong> → <strong>「Authentication」</strong> を選択し、「始める」を押します。</li>
+        <li>「ログイン プロバイダ」一覧から <strong>「Google」</strong> を選択します。</li>
+        <li>右上の <strong>「有効にする」</strong> をオンにし、プロジェクトのサポートメールでご自身のメールアドレスを選択して <strong>「保存」</strong> をクリックします。</li>
+      </ol>
+    </div>
+
+    <div class="step-section">
+      <h3 class="step-title">③ 承認済みドメインの追加</h3>
+      <ol>
+        <li>Authentication画面上部の <strong>「設定（Settings）」</strong> タブ → <strong>「承認済みドメイン」</strong> を開きます。</li>
+        <li><strong>「ドメインを追加」</strong> を押し、公開先のドメイン（例：<code>〇〇.pages.dev</code> など）を入力して保存します。</li>
+      </ol>
+    </div>
+
+    <div class="step-section">
+      <h3 class="step-title">④ 作業アカウントの招待と権限設定（Editor）</h3>
+      <ol>
+        <li>画面左上の歯車マーク（プロジェクト設定）→ <strong>「ユーザーと権限」</strong> を開きます。</li>
+        <li><strong>「メンバーを追加」</strong> をクリックします。</li>
+        <li>作業者の Google メールアドレスを入力し、ロールに <strong>「編集者（Editor）」</strong> を選択して「追加」をクリックします。</li>
+      </ol>
+    </div>
+
+    <!-- 削除手順 -->
+    <div class="removal-box">
+      <h3 class="step-title removal">【納品・作業完了後】作業アカウントの削除手順</h3>
+      <ol>
+        <li>Firebase画面左上の歯車マーク → <strong>「ユーザーと権限」</strong> を開きます。</li>
+        <li>メンバー一覧から作業者のアドレス右側にあるメニュー（縦の3点リーダー）をクリックし、<strong>「アクセス権を削除」</strong> を選択します。</li>
+        <li>確認画面で削除を実行すると、権限が解除されます。</li>
+      </ol>
+    </div>
+  </article>
+
+  <footer>
+    <p>Web Site Setup Manual &copy; 2026</p>
+  </footer>
+</div>
+
+</body>
+</html>
+
+```
