@@ -337,8 +337,18 @@
       <h3 class="step-title">① プロジェクト作成手順</h3>
       <ol>
         <li>Googleアカウントにログインした状態で <a href="https://console.firebase.google.com/" target="_blank" rel="noopener">Firebase Console</a> にアクセスします。</li>
-        <li><strong>「プロジェクトを追加」</strong> を選択し、任意のプロジェクト名を入力して「続行」を押します。</li>
+        <li><strong>「Firebase プロジェクトを設定して開始」</strong> を選択します。</li>
+        <img class="img" src="./assets/画像18.png" alt="画像18">
+        <br>
+        <li>任意のプロジェクト名を入力し、「Firebase の規約に同意します」にチェックをいれて「続行」を押します。</li>
+        <img class="img" src="./assets/画像19.png" alt="画像19">
+        <br>
+        <li>続けて表示される「Firebase プロジェクトのAIアシスタンス」は何もいじらずに「続行」を押します。</li>
+        <img class="img" src="./assets/画像20.png" alt="画像20">
+        <br>
         <li>Google アナリティクス設定画面が出た場合は「無効（または有効）」を選択し、<strong>「プロジェクトを作成」</strong> をクリックします。</li>
+          <div class="note">※アナリティクスの有効/無効はお好きな方を選んでください。<br>※設定には影響しません。</div>
+        <img class="img" src="./assets/画像21.png" alt="画像21">
       </ol>
     </div>
 
@@ -346,38 +356,68 @@
       <br>
       <h3 class="step-title">② Google認証の有効化手順</h3>
       <ol>
-        <li>ダッシュボード左メニューの <strong>「構築（Build）」</strong> → <strong>「Authentication」</strong> を選択し、「始める」を押します。</li>
-        <li>「ログイン プロバイダ」一覧から <strong>「Google」</strong> を選択します。</li>
-        <li>右上の <strong>「有効にする」</strong> をオンにし、プロジェクトのサポートメールでご自身のメールアドレスを選択して <strong>「保存」</strong> をクリックします。</li>
+        <li>ダッシュボード左メニューの <strong>「プロジェクトの概要」</strong> から <strong>「+アプリを追加」</strong> を選択します。</li>
+        <img class="img" src="./assets/画像22.png" alt="画像22">
+        <br>
+        <li>表示されるプラットフォームメニューから <strong>「</> (ウェブ)」</strong> を選択します。</li>
+        <img class="img" src="./assets/画像23.png" alt="画像23">
+        <br>
+        <li><strong>「アプリのニックネーム」</strong> に任意のニックネームを入力し <strong>「アプリを登録」</strong> を選択します。</li>
+        <img class="img" src="./assets/画像24.png" alt="画像24">
+        <br>
+        <li>表示される <strong>「SDK」</strong> をコピペしてメモ帳などに保存し <strong>「コンソールに進む」</strong> を選択してください。<br>※後ほど共有ください。認証システム実装時に使用します。</li>
+          <div class="note">
+            SDKは下記内容のコードになります。<br>
+            ---------<br>
+            <br>
+            // Import the functions you need from the SDKs you need<br>
+            import { initializeApp } from <strong>"パス"</strong>;<br>
+            // TODO: Add SDKs for Firebase products that you want to use<br>
+            // https://firebase.google.com/docs/web/setup#available-libraries<br>
+            <br>
+            // Your web app's Firebase configuration<br>
+            const firebaseConfig = {<br>
+              apiKey: <strong>"APIキー"</strong>,<br>
+              authDomain: <strong>"ドメイン"</strong>,<br>
+              projectId: <strong>"プロジェクトID",<br>
+              storageBucket: <strong>"ストレージバケット"</strong>,<br>
+              messagingSenderId: <strong>"メッセージング センダーID"</strong>,<br>
+              appId: <strong>"アプリID"</strong><br>
+            };<br>
+            <br>
+            // Initialize Firebase<br>
+            const app = <strong>"アプリ"</strong>;
+          </div>
+         <img class="img" src="./assets/画像25.png" alt="画像25">
+          <div class="note">
+            基本的には他人に知られてもシステム上のセキュリティ問題は発生しない（公開前提の）ものです。<br>
+            ただし、不要なトラブルを防ぐためにも、掲示板やSNS、ブログなどのパブリックな場所に故意に文字列を書き込んだり、スクリーンショットを公開したりすることは控えていただきますようお願いいたします。
+          </div>
       </ol>
     </div>
 
     <div class="step-section" style="border: none; border-top: 1px solid var(--border); margin: 24px 0;">
       <br>
       <h3 class="step-title">③ 承認済みドメインの追加</h3>
+        <div class="note">※この手順は私がサイトのドメイン作成後、ドメインをお伝えするのでそのタイミングで行ってください。</div>
       <ol>
-        <li>Authentication画面上部の <strong>「設定（Settings）」</strong> タブ → <strong>「承認済みドメイン」</strong> を開きます。</li>
-        <li><strong>「ドメインを追加」</strong> を押し、公開先のドメイン（例：<code>〇〇.pages.dev</code> など）を入力して保存します。</li>
-      </ol>
-    </div>
-
-    <div class="step-section" style="border: none; border-top: 1px solid var(--border); margin: 24px 0;">
-      <br>
-      <h3 class="step-title">④ 作業アカウントの招待と権限設定（Editor）</h3>
-      <ol>
-        <li>画面左上の歯車マーク（プロジェクト設定）→ <strong>「ユーザーと権限」</strong> を開きます。</li>
-        <li><strong>「メンバーを追加」</strong> をクリックします。</li>
-        <li>作業者の Google メールアドレスを入力し、ロールに <strong>「編集者（Editor）」</strong> を選択して「追加」をクリックします。</li>
-      </ol>
-    </div>
-
-    <!-- 削除手順 -->
-    <div class="removal-box">
-      <h3 class="step-title removal">【納品・作業完了後】作業アカウントの削除手順</h3>
-      <ol>
-        <li>Firebase画面左上の歯車マーク → <strong>「ユーザーと権限」</strong> を開きます。</li>
-        <li>メンバー一覧から作業者のアドレス右側にあるメニュー（縦の3点リーダー）をクリックし、<strong>「アクセス権を削除」</strong> を選択します。</li>
-        <li>確認画面で削除を実行すると、権限が解除されます。</li>
+        <li><strong>「セキュリティ」</strong> → <strong>「Authentication」</strong> を選択します。</li>
+        <img class="img" src="./assets/画像26.png" alt="画像26">
+        <br>
+        <li><strong>「始める」</strong> を選択します。（表示されない場合はこの手順はスキップで大丈夫です）</li>
+        <img class="img" src="./assets/画像27.png" alt="画像27">
+        <br>
+        <li><strong>「ログイン方法」</strong> のタブを選択し、追加のプロバイダから <strong>「Google」</strong> を選択します。</li>
+        <img class="img" src="./assets/画像28.png" alt="画像28">
+        <br>
+        <li><strong>「有効にする」</strong> をONにし、「プロジェクトのサポートメール」ご自身のメールアドレスを入力して <strong>「保存」</strong> します。</li>
+        <img class="img" src="./assets/画像29.png" alt="画像29">
+        <br>
+        <li>今度は <strong>「設定」</strong> タブを選択し、<strong>「承認済みドメイン」</strong> を選択します。</li>
+        <img class="img" src="./assets/画像30.png" alt="画像30">
+        <br>
+        <li><strong>「ドメインの追加」</strong> を選択し、表示されるダイアログにGoogle認証を使用する <strong>「ドメイン」</strong> を入力し、<strong>「追加」</strong> します。</li>
+        <img class="img" src="./assets/画像30.png" alt="画像30">
       </ol>
     </div>
   </article>
