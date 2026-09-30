@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>制作・依頼の流れ | Webサイト制作</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --accent-glow: rgba(88, 166, 255, 0.15);
+      --orange: #f0883e;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --line-color: #30363d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      padding: 40px 16px;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .badge-sub {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(240, 136, 62, 0.12);
+      border: 1px solid rgba(240, 136, 62, 0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .lead {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* タイムラインコンテナ */
+    .timeline {
+      position: relative;
+      padding-left: 36px;
+      margin-bottom: 40px;
+    }
+
+    /* タイムラインの縦線 */
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 10px;
+      bottom: 24px;
+      width: 2px;
+      background-color: var(--line-color);
+    }
+
+    /* 各ステップカード */
+    .step-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ダイヤ型アイコン */
+    .step-icon {
+      position: absolute;
+      left: -36px;
+      top: 18px;
+      width: 14px;
+      height: 14px;
+      background-color: var(--orange);
+      transform: rotate(45deg);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 10px rgba(240, 136, 62, 0.6);
+      border-radius: 2px;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .step-card:hover {
+      border-color: #484f58;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .step-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      display: inline-block;
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .step-desc {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .note-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--orange);
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .note-box p + p {
+      margin-top: 6px;
+    }
+
+    /* 備考ブロック */
+    .support-card {
+      background: linear-gradient(135deg, rgba(88, 166, 255, 0.08) 0%, rgba(22, 27, 34, 0.8) 100%);
+      border: 1px solid #388bfd4d;
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .support-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .support-title {
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .support-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 24px 12px;
+      }
+      .timeline {
+        padding-left: 28px;
+      }
+      .timeline::before {
+        left: 11px;
+      }
+      .step-icon {
+        left: -28px;
+        top: 20px;
+      }
+      .step-card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <span class="badge-sub">WORKFLOW</span>
+    <h1>ご依頼開始からお渡しまでの流れ</h1>
+    <p class="lead">アカウント作成から仮組確認、本番公開・お渡しまでのステップです。</p>
+  </header>
+
+  <div class="timeline">
+    <!-- STEP 1 -->
+    <div class="step-item">
+      <div class="step-icon"></div>
+      <div class="step-card">
+        <span class="step-tag">STEP 1</span>
+        <h2 class="step-title">アカウント準備・共同作業者の招待</h2>
+        <p class="step-desc">
+          ご依頼者様に <strong>GitHub</strong> と <strong>Cloudflare</strong> のアカウントを作成していただきます。<br>
+          作成完了後、私の作業用アカウントを共同作業者として招待していただきます。
+        </p>
+        <div class="note-box">
+          <p>※アカウントの作成方法や招待手順については、マニュアルを共有しながらサポートいたしますのでご安心ください。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step-item">
+      <div class="step-icon"></div>
+      <div class="step-card">
+        <span class="step-tag">STEP 2</span>
+        <h2 class="step-title">サイト作成の開始・仮組のご確認</h2>
+        <p class="step-desc">
+          ご依頼内容やご要望に沿って制作を開始します。<br>
+          大枠のベース（仮組）が組み上がった段階で一度共有し、全体の構成をご確認いただきます。
+        </p>
+        <div class="note-box">
+          <p>※このタイミングで確認用のWebページURLを共有いたします。以降はいつでもリアルタイムで実際の表示や進行状況をご確認いただけます。</p>
+          <p>※追加のご要望やアイデアがございましたら、いつでもお気軽にご相談ください。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-item">
+      <div class="step-icon"></div>
+      <div class="step-card">
+        <span class="step-tag">STEP 3</span>
+        <h2 class="step-title">実アセット（画像・動画）への差し替え</h2>
+        <p class="step-desc">
+          実際にご依頼者様にご用意いただいた立ち絵画像・動画・各種アセットへと差し替えを行い、仕上がりやバランスを確認していただきます。
+        </p>
+        <div class="note-box">
+          <p>※素材がすでに揃っている場合は、STEP 2（制作開始段階）から本番用のアセットを使用して進めることも可能です。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step-item">
+      <div class="step-icon"></div>
+      <div class="step-card">
+        <span class="step-tag">STEP 4</span>
+        <h2 class="step-title">ブラッシュアップ・細部の調整</h2>
+        <p class="step-desc">
+          動作チェックやデザインのブラッシュアップを重ね、ご依頼者様が心から満足のいく形へと丁寧に仕上げていきます。
+        </p>
+        <div class="note-box">
+          <p>※気になる点や微調整したい部分は遠慮なくお申し付けください！<br>
+          唯一無二のサイトへと仕上げるため妥協はいたしません。仕組み上の制限がない限り、可能な限り柔軟に対応いたします。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step-item">
+      <div class="step-icon"></div>
+      <div class="step-card">
+        <span class="step-tag">STEP 5</span>
+        <h2 class="step-title">最終チェック・納品・権限解除</h2>
+        <p class="step-desc">
+          すべての機能・表示を最終確認していただき、問題がなければ私の作業アカウントを各サービスから削除（アクセス権解除）していただき、納品完了となります。
+        </p>
+        <div class="note-box">
+          <p>※作業アカウントの削除手順もしっかりとお伝えいたします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 備考・サポート体制 -->
+  <div class="support-card">
+    <div class="support-icon">💡</div>
+    <div>
+      <h3 class="support-title">ご依頼時のサポートについて</h3>
+      <p class="support-desc">
+        いくつかご依頼者様側で行っていただく初期設定がございますが、すべて必要に応じて丁寧にご案内いたします。<br>
+        テキストでのやり取りはもちろん、ご不安な場合は <span class="highlight">Discord にて画面共有をしながらの同席サポート</span> も可能ですので、Web知識に自信がない方でも安心してご相談ください。
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Web Development & Design</p>
+  </footer>
+</div>
+
+</body>
+</html>
