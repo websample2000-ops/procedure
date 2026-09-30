@@ -17,6 +17,7 @@
       --text: #e6edf3;
       --text-muted: #8b949e;
       --line-color: #30363d;
+      --success: #3fb950;
     }
 
     * {
@@ -72,9 +73,9 @@
     /* セクション見出し */
     .section-header {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 40px 0 24px;
+      flex-direction: column;
+      gap: 4px;
+      margin: 48px 0 24px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
     }
@@ -84,6 +85,11 @@
       color: #fff;
       font-weight: 700;
       letter-spacing: 0.03em;
+    }
+
+    .section-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
     }
 
     /* 共通 details / summary (アコーディオン) */
@@ -130,6 +136,156 @@
     details[open] > summary .chevron-icon {
       transform: rotate(180deg);
       color: var(--orange);
+    }
+
+    /* =========================================
+       無料枠スペック（新規追加セクション）
+       ========================================= */
+    .spec-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .spec-summary {
+      padding: 16px 20px;
+      border-radius: 10px;
+    }
+
+    .spec-header-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .spec-badge {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(88, 166, 255, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(88, 166, 255, 0.3);
+      font-weight: 600;
+    }
+
+    .spec-body {
+      padding: 0 20px 20px;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.7;
+      border-top: 1px solid rgba(48, 54, 61, 0.4);
+      margin-top: 4px;
+      padding-top: 16px;
+    }
+
+    .spec-sub-service {
+      margin-bottom: 18px;
+    }
+
+    .spec-sub-service:last-child {
+      margin-bottom: 0;
+    }
+
+    .spec-sub-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .spec-sub-title::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--orange);
+      border-radius: 50%;
+    }
+
+    .spec-items {
+      list-style: none;
+      padding-left: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .spec-items li {
+      position: relative;
+      padding-left: 14px;
+      color: var(--text-muted);
+    }
+
+    .spec-items li::before {
+      content: "-";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .spec-items strong {
+      color: var(--text);
+    }
+
+    /* 結論カード */
+    .conclusion-card {
+      background: linear-gradient(135deg, rgba(63, 185, 80, 0.08) 0%, rgba(22, 27, 34, 0.9) 100%);
+      border: 1px solid rgba(63, 185, 80, 0.3);
+      border-radius: 10px;
+      padding: 22px;
+      margin-top: 20px;
+    }
+
+    .conclusion-title {
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .conclusion-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .conclusion-list li {
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .conclusion-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    .conclusion-list strong {
+      color: var(--text);
+    }
+
+    .conclusion-footer {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(63, 185, 80, 0.2);
+      font-size: 0.93rem;
+      color: var(--text);
+      font-weight: 600;
     }
 
     /* =========================================
@@ -379,12 +535,156 @@
   <header>
     <span class="badge-sub">GUIDE & SUPPORT</span>
     <h1>制作の流れ & よくあるご質問</h1>
-    <p class="lead">安心してご依頼いただけるよう、進め方と疑問点をまとめております。</p>
+    <p class="lead">安心してご依頼いただけるよう、進め方・仕様・疑問点をまとめております。</p>
   </header>
 
-  <!-- セクション1: 手順 -->
+  <!-- =========================================
+       セクション0: 無料枠（Freeプラン）の制限まとめ
+       ========================================= -->
+  <div class="section-header">
+    <h2 class="section-title">主要サービスの無料枠と制限まとめ</h2>
+    <p class="section-desc">各サービスが公式に定めている無料枠（Freeプラン / Sparkプラン）の主な上限と制限のまとめです。個人勢VTuberやクリエイターのポータルサイト運用において、実用上ポイントとなる数値を整理しています。</p>
+  </div>
+
+  <div class="spec-list">
+    <!-- 1. Cloudflare -->
+    <details>
+      <summary class="spec-summary">
+        <div class="spec-header-title">
+          <span>1. Cloudflare（Pages / Workers / D1 / R2）</span>
+          <span class="spec-badge">エッジ基盤</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="spec-body">
+        <p style="margin-bottom: 16px; color: var(--text-muted);">エッジサーバーおよびデータ管理の中核となるCloudflareの無料枠です。個人サイト用途では上限に達するのが困難なほど寛容な設定になっています。</p>
+
+        <div class="spec-sub-service">
+          <div class="spec-sub-title">Cloudflare Pages（静的・Webフロントエンド）</div>
+          <ul class="spec-items">
+            <li><strong>帯域幅（転送量）：</strong> 無制限（無料枠でも下り転送量の課金なし）</li>
+            <li><strong>月間ビルド回数：</strong> 500回/月</li>
+            <li><strong>同時ビルド数：</strong> 1回</li>
+            <li><strong>カスタムドメイン：</strong> 無制限（SSL証明書も自動発行）</li>
+          </ul>
+        </div>
+
+        <div class="spec-sub-service">
+          <div class="spec-sub-title">Cloudflare Workers（API / サーバーレス処理）</div>
+          <ul class="spec-items">
+            <li><strong>リクエスト数：</strong> 100,000リクエスト/日（毎日リセット）</li>
+            <li><strong>CPU実行時間：</strong> 10ミリ秒/リクエスト（静的データの返却やDB中継には十分）</li>
+          </ul>
+        </div>
+
+        <div class="spec-sub-service">
+          <div class="spec-sub-title">Cloudflare D1（サーバーレスSQLデータベース）</div>
+          <ul class="spec-items">
+            <li><strong>読み取り行数：</strong> 500万行/日</li>
+            <li><strong>書き込み行数：</strong> 10万行/日</li>
+            <li><strong>ストレージ容量：</strong> 5GB（全体で合計）</li>
+          </ul>
+        </div>
+
+        <div class="spec-sub-service">
+          <div class="spec-sub-title">Cloudflare R2（オブジェクトストレージ / 画像保管）</div>
+          <ul class="spec-items">
+            <li><strong>ストレージ容量：</strong> 10GB/月</li>
+            <li><strong>クラスA操作（書き込み・一覧取得など）：</strong> 100万回/月</li>
+            <li><strong>クラスB操作（読み取り・画像表示など）：</strong> 1,000万回/月</li>
+            <li><strong>エグレス（下り転送量）：</strong> 完全無料（0円） ※AWS S3等と異なり転送量課金が一切ありません</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <!-- 2. GitHub -->
+    <details>
+      <summary class="spec-summary">
+        <div class="spec-header-title">
+          <span>2. GitHub Pages / Actions</span>
+          <span class="spec-badge">コード管理</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="spec-body">
+        <p style="margin-bottom: 16px; color: var(--text-muted);">コード管理およびドキュメント等の公開で使用するGitHubの制限です。</p>
+
+        <div class="spec-sub-service">
+          <div class="spec-sub-title">GitHub Pages（静的ホスティング）</div>
+          <ul class="spec-items">
+            <li><strong>リポジトリ容量の上限目安：</strong> 1GB推奨</li>
+            <li><strong>公開サイトのサイズ上限：</strong> 1GB</li>
+            <li><strong>月間転送量（帯域幅）：</strong> 100GB/月</li>
+            <li><strong>ビルド制限：</strong> 1時間に10ビルドまで</li>
+          </ul>
+        </div>
+
+        <div class="spec-sub-service">
+          <div class="spec-sub-title">GitHub Actions（自動化・CI/CD）</div>
+          <ul class="spec-items">
+            <li><strong>パブリックリポジトリ：</strong> 完全無料・実行時間実質無制限</li>
+            <li><strong>プライベートリポジトリ：</strong> 2,000分/月（無料枠）</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <!-- 3. Firebase -->
+    <details>
+      <summary class="spec-summary">
+        <div class="spec-header-title">
+          <span>3. Firebase（Sparkプラン / 無料枠）</span>
+          <span class="spec-badge">認証基盤</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="spec-body">
+        <p style="margin-bottom: 16px; color: var(--text-muted);">管理画面の認証基盤（Google OAuth）や設定連携で使用するFirebaseの制限です。</p>
+
+        <div class="spec-sub-service">
+          <div class="spec-sub-title">Firebase Authentication（ユーザー認証）</div>
+          <ul class="spec-items">
+            <li><strong>月間アクティブユーザー（MAU）：</strong> 電話認証を除く一般的な認証（Googleログイン、メール等）は実質無制限（50,000人/月まで無料、それを超えても標準プロバイダは無料枠内）</li>
+            <li>※管理者やスタッフ数名が管理画面にログインするだけの用途であれば、上限を気にする必要は全くありません。</li>
+          </ul>
+        </div>
+
+        <div class="spec-sub-service">
+          <div class="spec-sub-title">Cloud Storage for Firebase（仮にStorageを使う場合）</div>
+          <ul class="spec-items">
+            <li><strong>保存容量：</strong> 5GB</li>
+            <li><strong>ダウンロード転送量：</strong> 1GB/日</li>
+            <li><strong>アップロード操作：</strong> 20,000回/日</li>
+            <li><strong>ダウンロード操作：</strong> 50,000回/日</li>
+            <li>※画像保存をCloudflare R2に集約する場合は、この制限も回避できます。</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 個人ポータルサイト運用における結論 -->
+  <div class="conclusion-card">
+    <div class="conclusion-title">
+      <span>🛡️ 個人ポータルサイト運用における結論</span>
+    </div>
+    <ul class="conclusion-list">
+      <li><strong>アクセス数：</strong> Workersの1日10万リクエスト、D1の1日500万行読み込みは、大手VTuberのバズ配信クラスでも無料枠内で耐えうる規模です。</li>
+      <li><strong>画像・転送量：</strong> Cloudflare Pagesは帯域無制限、R2も下り転送量が完全無料のため、「リスナーが大量にアクセスして高額請求が来る」というクラウド破産の受動リスクが構造上ゼロになっています。</li>
+      <li><strong>運用体制：</strong> Firebase AuthとCloudflare D1による管理画面の認証・権限管理も、数人〜数十人のスタッフ運用では無料枠の1%も消費しません。</li>
+    </ul>
+    <div class="conclusion-footer">
+      💡 「維持費0円（完全無料枠運用）」と謳って提供するにあたり、キャパシティ・安全面ともに十分すぎる余裕があります。
+    </div>
+  </div>
+
+  <!-- =========================================
+       セクション1: 手順
+       ========================================= -->
   <div class="section-header">
     <h2 class="section-title">制作・納品までの流れ</h2>
+    <p class="section-desc">アカウント作成から仮組確認、本番公開・お渡しまでのステップです。</p>
   </div>
 
   <div class="timeline">
@@ -515,9 +815,12 @@
     </div>
   </div>
 
-  <!-- セクション2: Q&A -->
+  <!-- =========================================
+       セクション2: Q&A
+       ========================================= -->
   <div class="section-header" style="margin-top: 56px;">
     <h2 class="section-title">よくあるご質問（Q&amp;A）</h2>
+    <p class="section-desc">無料運用の理由やセキュリティ、日々の運用方法について回答しています。</p>
   </div>
 
   <div class="qa-list">
@@ -615,10 +918,10 @@
       <div class="qa-answer">
         <p>各サービスに個別にログインしなくても、専用の管理画面ひとつで現在のシステム状態（サーバー稼働状況、デプロイ履歴、容量など）が一目で確認できるようになっています。</p>
         <p>面倒な設定値や接続キー（GitHub PATやFirebase設定）も管理画面からいつでも確認・更新でき、非エンジニアの方でも迷わず運用できる設計にしています。</p>
-          <div class="note-box">
-            サイトの基本構造そのものを大幅に改造したり、インフラの根幹に関わる設定を変更・解約するような特殊な場合を除き、<strong>日常の活動運用に必要な操作はすべて専用の管理画面ひとつで完結</strong>します。<br>
-            （各種サービスを連携させる最初の初期設定だけはお手伝いが必要になりますが、丁寧にサポートいたしますのでご安心ください）
-          </div>
+        <div class="note-box">
+          サイトの基本構造そのものを大幅に改造したり、インフラの根幹に関わる設定を変更・解約するような特殊な場合を除き、<strong>日常の活動運用に必要な操作はすべて専用の管理画面ひとつで完結</strong>します。<br>
+          （各種サービスを連携させる最初の初期設定だけはお手伝いが必要になりますが、丁寧にサポートいたしますのでご安心ください）
+        </div>
       </div>
     </details>
 
@@ -655,17 +958,17 @@
       <div class="qa-answer">
         <p>完全にデータを引き継いでスムーズに移行できる設計にしています。管理画面からいつでも全データ（D1 SQL / JSON）をワンクリックでエクスポート可能です。</p>
         <p>リポジトリ構成や設定ファイル（YAML）も標準的かつ綺麗に整理されているため、将来別のエンジニア様や制作会社様に引き継ぐ際も、データを手元に残したまま安心してバトンタッチしていただけます。</p>
-          <div class="note-box">
-            今回作成する完全無料構成には無料枠の制限があります。（基本的に通常の個人活動に際してこの制限に引っかかることはほぼありません）<br>
-            <br>
-            ですが、コード管理やドキュメント公開に利用している<strong>GitHub Pages等の利用規約では「ページ内での商用決済・直接取引の処理や、クレジットカード番号等の機密情報の取り扱い」が禁止</strong>されています。 （※BOOTHなどの外部ECサイトへリンクを飛ばして購入してもらう形であれば、規約上まったく問題ありません）<br>
-            <br>
-            また、サイト内で直接グッズ決済を行ったり、ファンクラブのように個人情報や決済方法を登録・保持する会員システムを構築する場合、<strong>厳格なセキュリティ基準や個人情報保護への対応が必要となり、無料枠のエッジ構成単体で安全に運用することはできません。</strong><br>
-            <br>
-            今後、活動がさらに拡大して「企業勢や超大型個人勢のように、グッズ販売や有料ファンクラブを含めたすべてを1つの独自サイト内で完結させたい」となった場合は、専門のEC/ファンクラブ専用プラットフォームや、大規模向けの有料サーバー環境への移行がどうしても必要になります。<br>
-            <br>
-            そのため、「せっかく作ってもらったのに」「今までお世話になったのに」と移行することを申し訳なく思う必要は全くありません！ むしろ、そこに至るまでこのサイトを足場として使っていただき、活動の支えになれていたなら、開発者としてそれ以上に喜ばしいことはありません。 依頼者様がどんどん活動を拡大し、大きく羽ばたいていくことを心より願っております。
-          </div>
+        <div class="note-box">
+          今回作成する完全無料構成には無料枠の制限があります。（基本的に通常の個人活動に際してこの制限に引っかかることはほぼありません）<br>
+          <br>
+          ですが、コード管理やドキュメント公開に利用している<strong>GitHub Pages等の利用規約では「ページ内での商用決済・直接取引の処理や、クレジットカード番号等の機密情報の取り扱い」が禁止</strong>されています。 （※BOOTHなどの外部ECサイトへリンクを飛ばして購入してもらう形であれば、規約上まったく問題ありません）<br>
+          <br>
+          また、サイト内で直接グッズ決済を行ったり、ファンクラブのように個人情報や決済方法を登録・保持する会員システムを構築する場合、<strong>厳格なセキュリティ基準や個人情報保護への対応が必要となり、無料枠のエッジ構成単体で安全に運用することはできません。</strong><br>
+          <br>
+          今後、活動がさらに拡大して「企業勢や超大型個人勢のように、グッズ販売や有料ファンクラブを含めたすべてを1つの独自サイト内で完結させたい」となった場合は、専門のEC/ファンクラブ専用プラットフォームや、大規模向けの有料サーバー環境への移行がどうしても必要になります。<br>
+          <br>
+          そのため、「せっかく作ってもらったのに」「今までお世話になったのに」と移行することを申し訳なく思う必要は全くありません！ むしろ、そこに至るまでこのサイトを足場として使っていただき、活動の支えになれていたなら、開発者としてそれ以上に喜ばしいことはありません。 依頼者様がどんどん活動を拡大し、大きく羽ばたいていくことを心より願っております。
+        </div>
       </div>
     </details>
 
