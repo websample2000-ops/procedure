@@ -370,42 +370,6 @@
       .qa-answer {
         padding: 0 16px 16px 16px;
       }
-
-      code {
-        background: var(--code-bg);
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 0.85em;
-        color: #ff7b72;
-      }
-
-      .note {
-        background: rgba(88, 166, 255, 0.08);
-        border-left: 4px solid var(--accent);
-        padding: 10px 14px;
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        border-radius: 0 4px 4px 0;
-        margin: 8px 0 12px;
-      }
-
-      .note-danger {
-        background: var(--danger-bg);
-        border-left: 4px solid var(--danger);
-        padding: 10px 14px;
-        font-size: 0.85rem;
-        color: #ff7b72;
-        border-radius: 0 4px 4px 0;
-        margin: 8px 0 12px;
-      }
-
-      .removal-box {
-        border: 1px dashed #da3633;
-        background: rgba(248, 81, 73, 0.04);
-        padding: 16px;
-        border-radius: 6px;
-        margin-top: 20px;
-      }
     }
   </style>
 </head>
@@ -651,7 +615,7 @@
       <div class="qa-answer">
         <p>各サービスに個別にログインしなくても、専用の管理画面ひとつで現在のシステム状態（サーバー稼働状況、デプロイ履歴、容量など）が一目で確認できるようになっています。</p>
         <p>面倒な設定値や接続キー（GitHub PATやFirebase設定）も管理画面からいつでも確認・更新でき、非エンジニアの方でも迷わず運用できる設計にしています。</p>
-          <div class="note">
+          <div class="note-box">
             サイトの基本構造そのものを大幅に改造したり、インフラの根幹に関わる設定を変更・解約するような特殊な場合を除き、<strong>日常の活動運用に必要な操作はすべて専用の管理画面ひとつで完結</strong>します。<br>
             （各種サービスを連携させる最初の初期設定だけはお手伝いが必要になりますが、丁寧にサポートいたしますのでご安心ください）
           </div>
@@ -691,7 +655,7 @@
       <div class="qa-answer">
         <p>完全にデータを引き継いでスムーズに移行できる設計にしています。管理画面からいつでも全データ（D1 SQL / JSON）をワンクリックでエクスポート可能です。</p>
         <p>リポジトリ構成や設定ファイル（YAML）も標準的かつ綺麗に整理されているため、将来別のエンジニア様や制作会社様に引き継ぐ際も、データを手元に残したまま安心してバトンタッチしていただけます。</p>
-          <div class="note">
+          <div class="note-box">
             今回作成する完全無料構成には無料枠の制限があります。（基本的に通常の個人活動に際してこの制限に引っかかることはほぼありません）<br>
             <br>
             ですが、コード管理やドキュメント公開に利用している<strong>GitHub Pages等の利用規約では「ページ内での商用決済・直接取引の処理や、クレジットカード番号等の機密情報の取り扱い」が禁止</strong>されています。 （※BOOTHなどの外部ECサイトへリンクを飛ばして購入してもらう形であれば、規約上まったく問題ありません）<br>
