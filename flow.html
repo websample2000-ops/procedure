@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>制作・依頼の流れ | Webサイト制作</title>
+  <title>制作・依頼の流れ & よくあるご質問 | Webサイト制作</title>
   <style>
     :root {
       --bg: #0d1117;
       --card-bg: #161b22;
+      --card-hover: #1c2128;
       --border: #30363d;
+      --border-accent: rgba(240, 136, 62, 0.4);
       --accent: #58a6ff;
       --accent-glow: rgba(88, 166, 255, 0.15);
       --orange: #f0883e;
@@ -28,7 +30,7 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.8;
-      padding: 40px 16px;
+      padding: 48px 16px;
     }
 
     .container {
@@ -49,14 +51,14 @@
       color: var(--orange);
       background: rgba(240, 136, 62, 0.12);
       border: 1px solid rgba(240, 136, 62, 0.3);
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 20px;
       margin-bottom: 12px;
       font-weight: 600;
     }
 
     h1 {
-      font-size: 1.85rem;
+      font-size: 1.9rem;
       color: #fff;
       margin-bottom: 12px;
       letter-spacing: 0.02em;
@@ -67,39 +69,101 @@
       font-size: 0.95rem;
     }
 
-    /* タイムラインコンテナ */
+    /* セクション見出し */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 40px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    /* 共通 details / summary (アコーディオン) */
+    details {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+    }
+
+    details[open] {
+      border-color: var(--border-accent);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    summary {
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color 0.2s;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary:hover {
+      background-color: var(--card-hover);
+    }
+
+    /* 開閉インジケーター（矢印アイコン） */
+    .chevron-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+      transition: transform 0.25s ease, color 0.25s ease;
+      margin-left: 12px;
+    }
+
+    details[open] > summary .chevron-icon {
+      transform: rotate(180deg);
+      color: var(--orange);
+    }
+
+    /* =========================================
+       1. 制作手順（タイムライン・アコーディオン）
+       ========================================= */
     .timeline {
       position: relative;
       padding-left: 36px;
       margin-bottom: 40px;
     }
 
-    /* タイムラインの縦線 */
     .timeline::before {
       content: "";
       position: absolute;
       left: 15px;
-      top: 10px;
+      top: 20px;
       bottom: 24px;
       width: 2px;
       background-color: var(--line-color);
     }
 
-    /* 各ステップカード */
     .step-item {
       position: relative;
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
 
     .step-item:last-child {
       margin-bottom: 0;
     }
 
-    /* ダイヤ型アイコン */
     .step-icon {
       position: absolute;
       left: -36px;
-      top: 18px;
+      top: 22px;
       width: 14px;
       height: 14px;
       background-color: var(--orange);
@@ -107,35 +171,38 @@
       border: 2px solid var(--bg);
       box-shadow: 0 0 10px rgba(240, 136, 62, 0.6);
       border-radius: 2px;
+      z-index: 1;
     }
 
-    .step-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+    .step-summary {
+      padding: 18px 22px;
       border-radius: 10px;
-      padding: 24px;
-      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .step-card:hover {
-      border-color: #484f58;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    .step-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
     .step-tag {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--orange);
       letter-spacing: 0.05em;
-      margin-bottom: 4px;
-      display: inline-block;
     }
 
     .step-title {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: #fff;
-      margin-bottom: 12px;
       font-weight: 600;
+    }
+
+    .step-body {
+      padding: 0 22px 22px;
+      border-top: 1px solid rgba(48, 54, 61, 0.5);
+      margin-top: 4px;
+      padding-top: 16px;
     }
 
     .step-desc {
@@ -147,18 +214,17 @@
     .note-box {
       background: rgba(255, 255, 255, 0.03);
       border-left: 3px solid var(--orange);
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 0 6px 6px 0;
       font-size: 0.88rem;
       color: var(--text-muted);
-      margin-top: 10px;
     }
 
     .note-box p + p {
-      margin-top: 6px;
+      margin-top: 8px;
     }
 
-    /* 備考ブロック */
+    /* 備考・サポート体制カード */
     .support-card {
       background: linear-gradient(135deg, rgba(88, 166, 255, 0.08) 0%, rgba(22, 27, 34, 0.8) 100%);
       border: 1px solid #388bfd4d;
@@ -167,6 +233,7 @@
       display: flex;
       gap: 16px;
       align-items: flex-start;
+      margin-top: 28px;
     }
 
     .support-icon {
@@ -184,7 +251,7 @@
     .support-desc {
       font-size: 0.9rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .highlight {
@@ -192,13 +259,89 @@
       font-weight: 500;
     }
 
+    /* =========================================
+       2. Q&A（アコーディオン）
+       ========================================= */
+    .qa-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .qa-summary {
+      padding: 18px 20px;
+      border-radius: 10px;
+    }
+
+    .qa-q {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .qa-q-badge {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--orange);
+      background: rgba(240, 136, 62, 0.15);
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .qa-answer {
+      padding: 0 20px 20px 58px;
+      font-size: 0.93rem;
+      color: var(--text);
+      line-height: 1.8;
+      border-top: 1px solid rgba(48, 54, 61, 0.4);
+      margin-top: 4px;
+      padding-top: 16px;
+    }
+
+    .qa-answer p + p {
+      margin-top: 10px;
+    }
+
+    .qa-list-item {
+      margin-top: 8px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qa-list-item li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+
+    .qa-list-item li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .qa-list-item strong {
+      color: var(--text);
+    }
+
     footer {
       text-align: center;
-      margin-top: 48px;
+      margin-top: 56px;
       font-size: 0.85rem;
       color: var(--text-muted);
       border-top: 1px solid var(--border);
-      padding-top: 20px;
+      padding-top: 24px;
     }
 
     @media (max-width: 600px) {
@@ -213,10 +356,19 @@
       }
       .step-icon {
         left: -28px;
-        top: 20px;
+        top: 24px;
       }
-      .step-card {
-        padding: 18px;
+      .step-summary {
+        padding: 16px;
+      }
+      .step-body {
+        padding: 0 16px 16px;
+      }
+      .qa-summary {
+        padding: 16px;
+      }
+      .qa-answer {
+        padding: 0 16px 16px 16px;
       }
     }
   </style>
@@ -225,89 +377,129 @@
 
 <div class="container">
   <header>
-    <span class="badge-sub">WORKFLOW</span>
-    <h1>ご依頼開始からお渡しまでの流れ</h1>
-    <p class="lead">アカウント作成から仮組確認、本番公開・お渡しまでのステップです。</p>
+    <span class="badge-sub">GUIDE & SUPPORT</span>
+    <h1>制作の流れ & よくあるご質問</h1>
+    <p class="lead">安心してご依頼いただけるよう、進め方と疑問点をまとめております。</p>
   </header>
+
+  <!-- セクション1: 手順 -->
+  <div class="section-header">
+    <h2 class="section-title">制作・納品までの流れ</h2>
+  </div>
 
   <div class="timeline">
     <!-- STEP 1 -->
     <div class="step-item">
       <div class="step-icon"></div>
-      <div class="step-card">
-        <span class="step-tag">STEP 1</span>
-        <h2 class="step-title">アカウント準備・共同作業者の招待</h2>
-        <p class="step-desc">
-          ご依頼者様に <strong>GitHub</strong> と <strong>Cloudflare</strong> のアカウントを作成していただきます。<br>
-          作成完了後、私の作業用アカウントを共同作業者として招待していただきます。
-        </p>
-        <div class="note-box">
-          <p>※アカウントの作成方法や招待手順については、マニュアルを共有しながらサポートいたしますのでご安心ください。</p>
+      <details>
+        <summary class="step-summary">
+          <div class="step-header-text">
+            <span class="step-tag">STEP 1</span>
+            <div class="step-title">アカウント準備・共同作業者の招待</div>
+          </div>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </summary>
+        <div class="step-body">
+          <p class="step-desc">
+            ご依頼者様に <strong>GitHub</strong> と <strong>Cloudflare</strong> のアカウントを作成していただきます。<br>
+            作成後、私の作業用アカウントを共同作業者として招待していただきます。
+          </p>
+          <div class="note-box">
+            <p>※アカウントの作成方法や招待手順については、マニュアルを共有しながらサポートいたしますのでご安心ください。</p>
+          </div>
         </div>
-      </div>
+      </details>
     </div>
 
     <!-- STEP 2 -->
     <div class="step-item">
       <div class="step-icon"></div>
-      <div class="step-card">
-        <span class="step-tag">STEP 2</span>
-        <h2 class="step-title">サイト作成の開始・仮組のご確認</h2>
-        <p class="step-desc">
-          ご依頼内容やご要望に沿って制作を開始します。<br>
-          大枠のベース（仮組）が組み上がった段階で一度共有し、全体の構成をご確認いただきます。
-        </p>
-        <div class="note-box">
-          <p>※このタイミングで確認用のWebページURLを共有いたします。以降はいつでもリアルタイムで実際の表示や進行状況をご確認いただけます。</p>
-          <p>※追加のご要望やアイデアがございましたら、いつでもお気軽にご相談ください。</p>
+      <details>
+        <summary class="step-summary">
+          <div class="step-header-text">
+            <span class="step-tag">STEP 2</span>
+            <div class="step-title">サイト作成の開始・仮組のご確認</div>
+          </div>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </summary>
+        <div class="step-body">
+          <p class="step-desc">
+            ご依頼内容やご要望に沿って制作を開始します。<br>
+            大枠のベース（仮組）が組み上がった段階で一度共有し、全体の構成をご確認いただきます。
+          </p>
+          <div class="note-box">
+            <p>※このタイミングで確認用のWebページURLを共有いたします。以降はいつでもリアルタイムで実際の表示や進行状況をご確認いただけます。</p>
+            <p>※追加のご要望やアイデアがございましたら、いつでもお気軽にご相談ください。</p>
+          </div>
         </div>
-      </div>
+      </details>
     </div>
 
     <!-- STEP 3 -->
     <div class="step-item">
       <div class="step-icon"></div>
-      <div class="step-card">
-        <span class="step-tag">STEP 3</span>
-        <h2 class="step-title">実アセット（画像・動画）への差し替え</h2>
-        <p class="step-desc">
-          実際にご依頼者様にご用意いただいた立ち絵画像・動画・各種アセットへと差し替えを行い、仕上がりやバランスを確認していただきます。
-        </p>
-        <div class="note-box">
-          <p>※素材がすでに揃っている場合は、STEP 2（制作開始段階）から本番用のアセットを使用して進めることも可能です。</p>
+      <details>
+        <summary class="step-summary">
+          <div class="step-header-text">
+            <span class="step-tag">STEP 3</span>
+            <div class="step-title">実アセット（画像や動画）への差し替え</div>
+          </div>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </summary>
+        <div class="step-body">
+          <p class="step-desc">
+            実際にご依頼者様にご用意いただいた立ち絵画像・動画・各種アセットへと差し替えを行い、出来栄えや全体のバランスを確認していただきます。
+          </p>
+          <div class="note-box">
+            <p>※素材がすでに揃っている場合は、制作開始段階（STEP 2）から実際の画像にして進めても大丈夫です。</p>
+          </div>
         </div>
-      </div>
+      </details>
     </div>
 
     <!-- STEP 4 -->
     <div class="step-item">
       <div class="step-icon"></div>
-      <div class="step-card">
-        <span class="step-tag">STEP 4</span>
-        <h2 class="step-title">ブラッシュアップ・細部の調整</h2>
-        <p class="step-desc">
-          動作チェックやデザインのブラッシュアップを重ね、ご依頼者様が心から満足のいく形へと丁寧に仕上げていきます。
-        </p>
-        <div class="note-box">
-          <p>※気になる点や微調整したい部分は遠慮なくお申し付けください！<br>
-          唯一無二のサイトへと仕上げるため妥協はいたしません。仕組み上の制限がない限り、可能な限り柔軟に対応いたします。</p>
+      <details>
+        <summary class="step-summary">
+          <div class="step-header-text">
+            <span class="step-tag">STEP 4</span>
+            <div class="step-title">ブラッシュアップ・細部の仕上げ</div>
+          </div>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </summary>
+        <div class="step-body">
+          <p class="step-desc">
+            ブラッシュアップを重ね、ご依頼者様の満足いく形へと丁寧に仕上げていきます。
+          </p>
+          <div class="note-box">
+            <p>※遠慮なく気になるところはお伝えください！<br>
+            唯一無二のサイトへ仕上げるため妥協はいたしません。仕組み上の制限がない限り、可能な限り柔軟に対応いたします。</p>
+          </div>
         </div>
-      </div>
+      </details>
     </div>
 
     <!-- STEP 5 -->
     <div class="step-item">
       <div class="step-icon"></div>
-      <div class="step-card">
-        <span class="step-tag">STEP 5</span>
-        <h2 class="step-title">最終チェック・納品・権限解除</h2>
-        <p class="step-desc">
-          すべての機能・表示を最終確認していただき、問題がなければ私の作業アカウントを各サービスから削除（アクセス権解除）していただき、納品完了となります。
-        </p>
-        <div class="note-box">
-          <p>※作業アカウントの削除手順もしっかりとお伝えいたします。</p>
+      <details>
+        <summary class="step-summary">
+          <div class="step-header-text">
+            <span class="step-tag">STEP 5</span>
+            <div class="step-title">最終チェック・納品・アカウント削除</div>
+          </div>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </summary>
+        <div class="step-body">
+          <p class="step-desc">
+            最終チェックをしていただき、問題がなければ私のアカウントを作業者から削除し、お渡し完了となります。
+          </p>
+          <div class="note-box">
+            <p>※作業アカウントの削除などのやり方もマニュアルにてしっかりお伝えします。</p>
+          </div>
         </div>
-      </div>
+      </details>
     </div>
   </div>
 
@@ -315,16 +507,156 @@
   <div class="support-card">
     <div class="support-icon">💡</div>
     <div>
-      <h3 class="support-title">ご依頼時のサポートについて</h3>
+      <h3 class="support-title">ご依頼時のサポート・同席対応について</h3>
       <p class="support-desc">
-        いくつかご依頼者様側で行っていただく初期設定がございますが、すべて必要に応じて丁寧にご案内いたします。<br>
-        テキストでのやり取りはもちろん、ご不安な場合は <span class="highlight">Discord にて画面共有をしながらの同席サポート</span> も可能ですので、Web知識に自信がない方でも安心してご相談ください。
+        いくつかご依頼者様の方で行っていただく初期手順がありますが、すべて必要に応じて丁寧にお教えいたします。<br>
+        必要であれば <span class="highlight">Discordにて画面共有をしながらの同席サポート</span> でも対応可能ですので、設定に不安のある方でも安心してご相談ください。
       </p>
     </div>
   </div>
 
+  <!-- セクション2: Q&A -->
+  <div class="section-header" style="margin-top: 56px;">
+    <h2 class="section-title">よくあるご質問（Q&amp;A）</h2>
+  </div>
+
+  <div class="qa-list">
+    <!-- Q1 -->
+    <details>
+      <summary class="qa-summary">
+        <div class="qa-q">
+          <span class="qa-q-badge">Q</span>
+          <span>なぜ無料で制作を引き受けているのですか？</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="qa-answer">
+        <p>現在、制作実績の蓄積およびポートフォリオの充実を目的として活動しているためです。無料であっても手抜きは一切なく、実際の有料案件と同等以上のセキュリティ・品質管理・丁寧なやり取りを徹底して制作いたします。</p>
+      </div>
+    </details>
+
+    <!-- Q2 -->
+    <details>
+      <summary class="qa-summary">
+        <div class="qa-q">
+          <span class="qa-q-badge">Q</span>
+          <span>なぜ制作の早い段階からURLを共有するのですか？</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="qa-answer">
+        <p>「完成してから思っていたものと違った」という後悔をなくし、依頼者様と「一緒に作り上げる体験」を大切にしたいからです。</p>
+        <ul class="qa-list-item">
+          <li><strong>気兼ねなく要望を出せる：</strong> 完成後だと「せっかく作ってもらったのに修正をお願いするのは申し訳ない…」と遠慮してしまいがちですが、制作中であれば小さなことでも気軽に要望を出しやすくなります。</li>
+          <li><strong>操作感を事前に確かめられる：</strong> 実際に画面を触って動かしてみることで、言葉だけでは伝えきれなかったニュアンスや機能の過不足に早い段階で気づくことができます。</li>
+        </ul>
+        <p>納品されるサイトは、他でもない依頼者様自身のサイトです。ただ完成を待つのではなく、画面が形になっていく変化を一緒に楽しみながら、納得のいくものを作り上げたいと考えています。</p>
+      </div>
+    </details>
+
+    <!-- Q3 -->
+    <details>
+      <summary class="qa-summary">
+        <div class="qa-q">
+          <span class="qa-q-badge">Q</span>
+          <span>セキュリティやアカウントの乗っ取りなどの心配はありませんか？</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="qa-answer">
+        <p>各種サービス（サーバー、コード管理、認証基盤）のアカウント所有権はすべて依頼者様自身に保持していただきます。</p>
+        <p>制作マニュアルをWeb上で公開している通り、作業に必要な最低限の権限のみを一時的にお借りし、クレジットカード情報や契約プランの変更権限には一切触れられない仕組みを採用しています。納品後は手順に従って権限を解除していただくことで、作業者がサイトへアクセスできなくなるため、完全に自社・個人所有の状態で安心して運用していただけます。</p>
+      </div>
+    </details>
+
+    <!-- Q4 -->
+    <details>
+      <summary class="qa-summary">
+        <div class="qa-q">
+          <span class="qa-q-badge">Q</span>
+          <span>納品後の無償サポート期間が「3ヶ月」と長めに設定されているのはなぜですか？</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="qa-answer">
+        <p>サイトをお渡しした後の「実際のリアルな活動サイクル」にしっかり伴走したいからです。</p>
+        <ul class="qa-list-item">
+          <li><strong>素材の準備期間：</strong> 新しい立ち絵やキービジュアルをイラストレーター様に依頼してから納品されるまで、通常1ヶ月〜1ヶ月半ほどかかります。</li>
+          <li><strong>企画やイベントの準備：</strong> 記念配信やイベントを企画して準備を進めていると、1ヶ月はあっという間に過ぎてしまいます。</li>
+        </ul>
+        <p>「せっかく素材が揃って『さあサイトに組み込んで動かそう！』と思ったときには、すでにサポートが切れていた……」という事態は絶対に避けたいと考えています。3ヶ月あれば、サイトを受け取ってから「このサイトがあるなら、こんな新しい企画をやってみよう！」と動き出しても、十分サポート期間内に実運用・動作確認が可能です。</p>
+      </div>
+    </details>
+
+    <!-- Q5 -->
+    <details>
+      <summary class="qa-summary">
+        <div class="qa-q">
+          <span class="qa-q-badge">Q</span>
+          <span>画像やイラストの設定・更新は難しくありませんか？</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="qa-answer">
+        <p>非エンジニアの方でも直感的に設定できるよう設計しています。管理画面から画像を直接アップロードできるだけでなく、すでにお使いの「Googleドライブ」の共有URLをそのまま貼り付けるだけでも利用可能です。</p>
+        <p>共有リンクを貼るだけでサイト表示用URLへ自動変換されるため、「大切な元データは自分のGoogleドライブで安全に管理しておきたい」という方でも安心してお使いいただけます。</p>
+      </div>
+    </details>
+
+    <!-- Q6 -->
+    <details>
+      <summary class="qa-summary">
+        <div class="qa-q">
+          <span class="qa-q-badge">Q</span>
+          <span>複数のサービス（Cloudflare/GitHub/Firebase）を使っていると、管理が難しくありませんか？</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="qa-answer">
+        <p>各サービスに個別にログインしなくても、専用の管理画面ひとつで現在のシステム状態（サーバー稼働状況、デプロイ履歴、容量など）が一目で確認できるようになっています。</p>
+        <p>面倒な設定値や接続キー（GitHub PATやFirebase設定）も管理画面からいつでも確認・更新でき、非エンジニアの方でも迷わず運用できる設計にしています。</p>
+      </div>
+    </details>
+
+    <!-- Q7 -->
+    <details>
+      <summary class="qa-summary">
+        <div class="qa-q">
+          <span class="qa-q-badge">Q</span>
+          <span>今後活動が大きくなってスタッフやお手伝いをお願いする場合、共同で管理できますか？</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="qa-answer">
+        <p>はい、管理画面からメンバー追加と詳細な「権限設定（ロール分け）」が可能です。</p>
+        <ul class="qa-list-item">
+          <li><strong>オーナー（ご本人様）：</strong> すべての操作・設定が可能</li>
+          <li><strong>共同運営者（マネージャー等）：</strong> コンテンツ編集・画像管理全般が可能</li>
+          <li><strong>スタッフ（絵師様・Web担当等）：</strong> スケジュールやギャラリー等の日常更新のみ</li>
+          <li><strong>アシスタント（お知らせ担当アルバイト等）：</strong> お知らせ・告知の投稿・編集のみ</li>
+        </ul>
+        <p>スタッフやお手伝いの方に「プロフィールや基本設定、メンバー管理など大事な部分を誤って変更される心配」がなく、必要な作業権限だけを安全にお渡しいただけます。</p>
+      </div>
+    </details>
+
+    <!-- Q8 -->
+    <details>
+      <summary class="qa-summary">
+        <div class="qa-q">
+          <span class="qa-q-badge">Q</span>
+          <span>将来さらに活動が拡大して、別の企業や制作会社に移行したくなった場合はどうなりますか？</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="qa-answer">
+        <p>完全にデータを引き継いでスムーズに移行できる設計にしています。管理画面からいつでも全データ（D1 SQL / JSON）をワンクリックでエクスポート可能です。</p>
+        <p>リポジトリ構成や設定ファイル（YAML）も標準的かつ綺麗に整理されているため、将来別のエンジニア様や制作会社様に引き継ぐ際も、データを手元に残したまま安心してバトンタッチしていただけます。</p>
+      </div>
+    </details>
+  </div>
+
   <footer>
-    <p>Web Development & Design</p>
+    <p>Web Development &amp; Support</p>
   </footer>
 </div>
 
