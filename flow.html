@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>制作・依頼の流れ & よくあるご質問 | Webサイト制作</title>
+  <title>VTuber・クリエイター向けWeb制作 無料モニター募集 | 制作の流れ & FAQ</title>
   <style>
     :root {
       --bg: #0d1117;
@@ -14,6 +14,7 @@
       --accent: #58a6ff;
       --accent-glow: rgba(88, 166, 255, 0.15);
       --orange: #f0883e;
+      --orange-hover: #fa9a55;
       --text: #e6edf3;
       --text-muted: #8b949e;
       --line-color: #30363d;
@@ -24,6 +25,10 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -41,7 +46,7 @@
 
     header {
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 36px;
     }
 
     .badge-sub {
@@ -59,7 +64,7 @@
     }
 
     h1 {
-      font-size: 1.9rem;
+      font-size: 1.85rem;
       color: #fff;
       margin-bottom: 12px;
       letter-spacing: 0.02em;
@@ -70,6 +75,157 @@
       font-size: 0.95rem;
     }
 
+    /* =========================================
+       自己紹介・経緯・強み・CTAセクション
+       ========================================= */
+    .intro-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 32px;
+    }
+
+    .intro-title {
+      font-size: 1.25rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .intro-text {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .feature-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .feature-tag {
+      font-size: 0.8rem;
+      color: var(--orange);
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .feature-name {
+      font-size: 1rem;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .feature-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .cta-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      border: 1px solid var(--orange);
+      box-shadow: 0 4px 14px rgba(240, 136, 62, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(240, 136, 62, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(88, 166, 255, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(88, 166, 255, 0.4);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(88, 166, 255, 0.16);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* 目次（Nav） */
+    .toc-card {
+      background: linear-gradient(135deg, rgba(88, 166, 255, 0.04) 0%, rgba(22, 27, 34, 0.9) 100%);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 40px;
+    }
+
+    .toc-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toc-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .toc-link:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
     /* セクション見出し */
     .section-header {
       display: flex;
@@ -78,6 +234,7 @@
       margin: 48px 0 24px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
+      scroll-margin-top: 24px;
     }
 
     .section-title {
@@ -139,7 +296,7 @@
     }
 
     /* =========================================
-       無料枠スペック（新規追加セクション）
+       無料枠スペックセクション
        ========================================= */
     .spec-list {
       display: flex;
@@ -234,7 +391,6 @@
       color: var(--text);
     }
 
-    /* 結論カード */
     .conclusion-card {
       background: linear-gradient(135deg, rgba(63, 185, 80, 0.08) 0%, rgba(22, 27, 34, 0.9) 100%);
       border: 1px solid rgba(63, 185, 80, 0.3);
@@ -289,7 +445,7 @@
     }
 
     /* =========================================
-       1. 制作手順（タイムライン・アコーディオン）
+       制作手順（タイムライン・アコーディオン）
        ========================================= */
     .timeline {
       position: relative;
@@ -380,7 +536,6 @@
       margin-top: 8px;
     }
 
-    /* 備考・サポート体制カード */
     .support-card {
       background: linear-gradient(135deg, rgba(88, 166, 255, 0.08) 0%, rgba(22, 27, 34, 0.8) 100%);
       border: 1px solid #388bfd4d;
@@ -416,7 +571,7 @@
     }
 
     /* =========================================
-       2. Q&A（アコーディオン）
+       Q&A（アコーディオン）
        ========================================= */
     .qa-list {
       display: flex;
@@ -504,6 +659,15 @@
       body {
         padding: 24px 12px;
       }
+      .intro-card {
+        padding: 20px 16px;
+      }
+      .cta-area {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+      }
       .timeline {
         padding-left: 28px;
       }
@@ -533,17 +697,88 @@
 
 <div class="container">
   <header>
-    <span class="badge-sub">GUIDE & SUPPORT</span>
-    <h1>制作の流れ & よくあるご質問</h1>
-    <p class="lead">安心してご依頼いただけるよう、進め方・仕様・疑問点をまとめております。</p>
+    <span class="badge-sub">MONITOR PROJECT</span>
+    <h1>個人勢VTuber・クリエイター向けWebサイト制作</h1>
+    <p class="lead">初期費用・サーバー維持費0円で運用できる、完全オーダーメイドの公式サイト構築</p>
   </header>
 
+  <!-- 1. 自己紹介・経緯・強み・CTA -->
+  <section class="intro-card">
+    <h2 class="intro-title">はじめに / 無料モニター実施の背景</h2>
+    <div class="intro-text">
+      <p>初めまして。Web開発を行っております。ゲーム業界での長年の品質管理（QAリード）経験を活かし、表示速度・安全性・使いやすさに一切妥協のないWebサイト制作を手がけています。</p>
+      <p style="margin-top: 10px;">現在、<strong>「制作実績の蓄積およびポートフォリオのさらなる充実」</strong>を目的として、個人勢VTuber様やクリエイター様を対象に、通常は有料で構築する高品質なWebサイトを<strong>完全無償（無料モニター）</strong>にて制作・ご提供させていただいております。</p>
+    </div>
+
+    <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 12px; font-weight: 700;">今回制作するサイトの特長・強み</h3>
+    <div class="features-grid">
+      <div class="feature-item">
+        <span class="feature-tag">COST 0 YEN</span>
+        <div class="feature-name">維持費が完全永年無料</div>
+        <p class="feature-desc">CloudflareとGitHubの無料枠を最適設計。月額サーバー代・ドメインSSL代などの維持費0円で安定運用できます。</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="feature-tag">NO-CODE CMS</span>
+        <div class="feature-name">直感的な専用管理画面</div>
+        <p class="feature-desc">お知らせ投稿、配信スケジュール、立ち絵・画像差し替え、Googleドライブ共有連携まで直感的に更新可能です。</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="feature-tag">APP EXPERIENCE</span>
+        <div class="feature-name">PWAアプリアイコン更新</div>
+        <p class="feature-desc">リスナーのスマホホーム画面にアプリとして登録可能。周年や新衣装に合わせてアプリアイコンを着せ替えできます。</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="feature-tag">ZERO RISK</span>
+        <div class="feature-name">完全な所有権＆安全設計</div>
+        <p class="feature-desc">全アカウントはご自身で所有。納品後に作業者権限を削除するため、乗っ取りやクラウド破産の危険は構造上ゼロです。</p>
+      </div>
+    </div>
+
+    <!-- リンクボタン（CTA） -->
+    <div class="cta-area">
+      <a href="https://lpwebsample.pages.dev/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        🌐 サンプル・導入サイトを見る
+      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWt2T8LdeAaHfyLq-3kqxk2feFK0_8BoDFm8tFQvFzRi8uUQ/viewform" class="btn btn-primary">
+        ✉️ 無料モニターに応募
+      </a>
+      <a>
+        気になることや募集に際してご相談事などあれば<a href="https://x.com/urukanero_works" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">X(@urukanero_works)</a>にDMいただければと思います。<br>または<a href="https://t.co/YmNqcAovAT" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">マシュマロ</a>での匿名質問も受け付けてます。
+      </a>
+    </div>
+  </section>
+
+  <!-- 2. 目次ナビゲーション -->
+  <nav class="toc-card">
+    <div class="toc-title">INDEX / 目次</div>
+    <ul class="toc-list">
+      <li>
+        <a href="#sec-spec" class="toc-link">
+          <span>▸</span> 主要サービスの無料枠と制限まとめ
+        </a>
+      </li>
+      <li>
+        <a href="#sec-workflow" class="toc-link">
+          <span>▸</span> 制作・納品までの流れ
+        </a>
+      </li>
+      <li>
+        <a href="#sec-faq" class="toc-link">
+          <span>▸</span> よくあるご質問（Q&amp;A）
+        </a>
+      </li>
+    </ul>
+  </nav>
+
   <!-- =========================================
-       セクション0: 無料枠（Freeプラン）の制限まとめ
+       セクション1: 無料枠（Freeプラン）の制限まとめ
        ========================================= -->
-  <div class="section-header">
+  <div class="section-header" id="sec-spec">
     <h2 class="section-title">主要サービスの無料枠と制限まとめ</h2>
-    <p class="section-desc">各サービスが公式に定めている無料枠（Freeプラン / Sparkプラン）の主な上限と制限のまとめです。個人勢VTuberやクリエイターのポータルサイト運用において、実用上ポイントとなる数値を整理しています。</p>
+    <p class="section-desc">各サービスが公式に定めている無料枠（Freeプラン / Sparkプラン）の主な上限と制限のまとめです。個人勢VTuberやクリエイターのポータルサイト運用において、実用上ポイントとなる数値を整理しています[cite: 14, 15, 16, 17]。</p>
   </div>
 
   <div class="spec-list">
@@ -557,42 +792,42 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="spec-body">
-        <p style="margin-bottom: 16px; color: var(--text-muted);">エッジサーバーおよびデータ管理の中核となるCloudflareの無料枠です。個人サイト用途では上限に達するのが困難なほど寛容な設定になっています。</p>
+        <p style="margin-bottom: 16px; color: var(--text-muted);">エッジサーバーおよびデータ管理の中核となるCloudflareの無料枠です[cite: 14]。個人サイト用途では上限に達するのが困難なほど寛容な設定になっています[cite: 14]。</p>
 
         <div class="spec-sub-service">
           <div class="spec-sub-title">Cloudflare Pages（静的・Webフロントエンド）</div>
           <ul class="spec-items">
-            <li><strong>帯域幅（転送量）：</strong> 無制限（無料枠でも下り転送量の課金なし）</li>
-            <li><strong>月間ビルド回数：</strong> 500回/月</li>
-            <li><strong>同時ビルド数：</strong> 1回</li>
-            <li><strong>カスタムドメイン：</strong> 無制限（SSL証明書も自動発行）</li>
+            <li><strong>帯域幅（転送量）：</strong> 無制限（無料枠でも下り転送量の課金なし）[cite: 14]</li>
+            <li><strong>月間ビルド回数：</strong> 500回/月[cite: 14]</li>
+            <li><strong>同時ビルド数：</strong> 1回[cite: 14]</li>
+            <li><strong>カスタムドメイン：</strong> 無制限（SSL証明書も自動発行）[cite: 14]</li>
           </ul>
         </div>
 
         <div class="spec-sub-service">
           <div class="spec-sub-title">Cloudflare Workers（API / サーバーレス処理）</div>
           <ul class="spec-items">
-            <li><strong>リクエスト数：</strong> 100,000リクエスト/日（毎日リセット）</li>
-            <li><strong>CPU実行時間：</strong> 10ミリ秒/リクエスト（静的データの返却やDB中継には十分）</li>
+            <li><strong>リクエスト数：</strong> 100,000リクエスト/日（毎日リセット）[cite: 14]</li>
+            <li><strong>CPU実行時間：</strong> 10ミリ秒/リクエスト（静的データの返却やDB中継には十分）[cite: 14]</li>
           </ul>
         </div>
 
         <div class="spec-sub-service">
           <div class="spec-sub-title">Cloudflare D1（サーバーレスSQLデータベース）</div>
           <ul class="spec-items">
-            <li><strong>読み取り行数：</strong> 500万行/日</li>
-            <li><strong>書き込み行数：</strong> 10万行/日</li>
-            <li><strong>ストレージ容量：</strong> 5GB（全体で合計）</li>
+            <li><strong>読み取り行数：</strong> 500万行/日[cite: 14]</li>
+            <li><strong>書き込み行数：</strong> 10万行/日[cite: 14]</li>
+            <li><strong>ストレージ容量：</strong> 5GB（全体で合計）[cite: 14]</li>
           </ul>
         </div>
 
         <div class="spec-sub-service">
           <div class="spec-sub-title">Cloudflare R2（オブジェクトストレージ / 画像保管）</div>
           <ul class="spec-items">
-            <li><strong>ストレージ容量：</strong> 10GB/月</li>
-            <li><strong>クラスA操作（書き込み・一覧取得など）：</strong> 100万回/月</li>
-            <li><strong>クラスB操作（読み取り・画像表示など）：</strong> 1,000万回/月</li>
-            <li><strong>エグレス（下り転送量）：</strong> 完全無料（0円） ※AWS S3等と異なり転送量課金が一切ありません</li>
+            <li><strong>ストレージ容量：</strong> 10GB/月[cite: 14]</li>
+            <li><strong>クラスA操作（書き込み・一覧取得など）：</strong> 100万回/月[cite: 14]</li>
+            <li><strong>クラスB操作（読み取り・画像表示など）：</strong> 1,000万回/月[cite: 14]</li>
+            <li><strong>エグレス（下り転送量）：</strong> 完全無料（0円） ※AWS S3等と異なり転送量課金が一切ありません[cite: 14]</li>
           </ul>
         </div>
       </div>
@@ -608,23 +843,23 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="spec-body">
-        <p style="margin-bottom: 16px; color: var(--text-muted);">コード管理およびドキュメント等の公開で使用するGitHubの制限です。</p>
+        <p style="margin-bottom: 16px; color: var(--text-muted);">コード管理およびドキュメント等の公開で使用するGitHubの制限です[cite: 15]。</p>
 
         <div class="spec-sub-service">
           <div class="spec-sub-title">GitHub Pages（静的ホスティング）</div>
           <ul class="spec-items">
-            <li><strong>リポジトリ容量の上限目安：</strong> 1GB推奨</li>
-            <li><strong>公開サイトのサイズ上限：</strong> 1GB</li>
-            <li><strong>月間転送量（帯域幅）：</strong> 100GB/月</li>
-            <li><strong>ビルド制限：</strong> 1時間に10ビルドまで</li>
+            <li><strong>リポジトリ容量の上限目安：</strong> 1GB推奨[cite: 15]</li>
+            <li><strong>公開サイトのサイズ上限：</strong> 1GB[cite: 15]</li>
+            <li><strong>月間転送量（帯域幅）：</strong> 100GB/月[cite: 15]</li>
+            <li><strong>ビルド制限：</strong> 1時間に10ビルドまで[cite: 15]</li>
           </ul>
         </div>
 
         <div class="spec-sub-service">
           <div class="spec-sub-title">GitHub Actions（自動化・CI/CD）</div>
           <ul class="spec-items">
-            <li><strong>パブリックリポジトリ：</strong> 完全無料・実行時間実質無制限</li>
-            <li><strong>プライベートリポジトリ：</strong> 2,000分/月（無料枠）</li>
+            <li><strong>パブリックリポジトリ：</strong> 完全無料・実行時間実質無制限[cite: 15]</li>
+            <li><strong>プライベートリポジトリ：</strong> 2,000分/月（無料枠）[cite: 15]</li>
           </ul>
         </div>
       </div>
@@ -640,24 +875,24 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="spec-body">
-        <p style="margin-bottom: 16px; color: var(--text-muted);">管理画面の認証基盤（Google OAuth）や設定連携で使用するFirebaseの制限です。</p>
+        <p style="margin-bottom: 16px; color: var(--text-muted);">管理画面の認証基盤（Google OAuth）や設定連携で使用するFirebaseの制限です[cite: 16]。</p>
 
         <div class="spec-sub-service">
           <div class="spec-sub-title">Firebase Authentication（ユーザー認証）</div>
           <ul class="spec-items">
-            <li><strong>月間アクティブユーザー（MAU）：</strong> 電話認証を除く一般的な認証（Googleログイン、メール等）は実質無制限（50,000人/月まで無料、それを超えても標準プロバイダは無料枠内）</li>
-            <li>※管理者やスタッフ数名が管理画面にログインするだけの用途であれば、上限を気にする必要は全くありません。</li>
+            <li><strong>月間アクティブユーザー（MAU）：</strong> 電話認証を除く一般的な認証（Googleログイン、メール等）は実質無制限（50,000人/月まで無料、それを超えても標準プロバイダは無料枠内）[cite: 16]</li>
+            <li>※管理者やスタッフ数名が管理画面にログインするだけの用途であれば、上限を気にする必要は全くありません[cite: 16]。</li>
           </ul>
         </div>
 
         <div class="spec-sub-service">
           <div class="spec-sub-title">Cloud Storage for Firebase（仮にStorageを使う場合）</div>
           <ul class="spec-items">
-            <li><strong>保存容量：</strong> 5GB</li>
-            <li><strong>ダウンロード転送量：</strong> 1GB/日</li>
-            <li><strong>アップロード操作：</strong> 20,000回/日</li>
-            <li><strong>ダウンロード操作：</strong> 50,000回/日</li>
-            <li>※画像保存をCloudflare R2に集約する場合は、この制限も回避できます。</li>
+            <li><strong>保存容量：</strong> 5GB[cite: 16]</li>
+            <li><strong>ダウンロード転送量：</strong> 1GB/日[cite: 16]</li>
+            <li><strong>アップロード操作：</strong> 20,000回/日[cite: 16]</li>
+            <li><strong>ダウンロード操作：</strong> 50,000回/日[cite: 16]</li>
+            <li>※画像保存をCloudflare R2に集約する場合は、この制限も回避できます[cite: 16]。</li>
           </ul>
         </div>
       </div>
@@ -670,21 +905,21 @@
       <span>🛡️ 個人ポータルサイト運用における結論</span>
     </div>
     <ul class="conclusion-list">
-      <li><strong>アクセス数：</strong> Workersの1日10万リクエスト、D1の1日500万行読み込みは、大手VTuberのバズ配信クラスでも無料枠内で耐えうる規模です。</li>
-      <li><strong>画像・転送量：</strong> Cloudflare Pagesは帯域無制限、R2も下り転送量が完全無料のため、「リスナーが大量にアクセスして高額請求が来る」というクラウド破産の受動リスクが構造上ゼロになっています。</li>
-      <li><strong>運用体制：</strong> Firebase AuthとCloudflare D1による管理画面の認証・権限管理も、数人〜数十人のスタッフ運用では無料枠の1%も消費しません。</li>
+      <li><strong>アクセス数：</strong> Workersの1日10万リクエスト、D1の1日500万行読み込みは、大手VTuberのバズ配信クラスでも無料枠内で耐えうる規模です[cite: 17]。</li>
+      <li><strong>画像・転送量：</strong> Cloudflare Pagesは帯域無制限、R2も下り転送量が完全無料のため、「リスナーが大量にアクセスして高額請求が来る」というクラウド破産の受動リスクが構造上ゼロになっています[cite: 17]。</li>
+      <li><strong>運用体制：</strong> Firebase AuthとCloudflare D1による管理画面の認証・権限管理も、数人〜数十人のスタッフ運用では無料枠の1%も消費しません[cite: 17]。</li>
     </ul>
     <div class="conclusion-footer">
-      💡 「維持費0円（完全無料枠運用）」と謳って提供するにあたり、キャパシティ・安全面ともに十分すぎる余裕があります。
+      💡 「維持費0円（完全無料枠運用）」と謳って提供するにあたり、キャパシティ・安全面ともに十分すぎる余裕があります[cite: 17]。
     </div>
   </div>
 
   <!-- =========================================
-       セクション1: 手順
+       セクション2: 手順
        ========================================= -->
-  <div class="section-header">
+  <div class="section-header" id="sec-workflow">
     <h2 class="section-title">制作・納品までの流れ</h2>
-    <p class="section-desc">アカウント作成から仮組確認、本番公開・お渡しまでのステップです。</p>
+    <p class="section-desc">アカウント作成から仮組確認、本番公開・お渡しまでのステップです[cite: 18]。</p>
   </div>
 
   <div class="timeline">
@@ -701,11 +936,11 @@
         </summary>
         <div class="step-body">
           <p class="step-desc">
-            ご依頼者様に <strong>GitHub</strong> と <strong>Cloudflare</strong> のアカウントを作成していただきます。<br>
-            作成後、私の作業用アカウントを共同作業者として招待していただきます。
+            ご依頼者様に <strong>GitHub</strong> と <strong>Cloudflare</strong> のアカウントを作成していただきます[cite: 18]。<br>
+            作成後、私の作業用アカウントを共同作業者として招待していただきます[cite: 18]。
           </p>
           <div class="note-box">
-            <p>※アカウントの作成方法や招待手順については、マニュアルを共有しながらサポートいたしますのでご安心ください。</p>
+            <p>※アカウントの作成方法や招待手順については、マニュアルを共有しながらサポートいたしますのでご安心ください[cite: 18]。</p>
           </div>
         </div>
       </details>
@@ -724,12 +959,12 @@
         </summary>
         <div class="step-body">
           <p class="step-desc">
-            ご依頼内容やご要望に沿って制作を開始します。<br>
-            大枠のベース（仮組）が組み上がった段階で一度共有し、全体の構成をご確認いただきます。
+            ご依頼内容やご要望に沿って制作を開始します[cite: 18]。<br>
+            大枠のベース（仮組）が組み上がった段階で一度共有し、全体の構成をご確認いただきます[cite: 18]。
           </p>
           <div class="note-box">
-            <p>※このタイミングで確認用のWebページURLを共有いたします。以降はいつでもリアルタイムで実際の表示や進行状況をご確認いただけます。</p>
-            <p>※追加のご要望やアイデアがございましたら、いつでもお気軽にご相談ください。</p>
+            <p>※このタイミングで確認用のWebページURLを共有いたします[cite: 18]。以降はいつでもリアルタイムで実際の表示や進行状況をご確認いただけます[cite: 18]。</p>
+            <p>※追加のご要望やアイデアがございましたら、いつでもお気軽にご相談ください[cite: 18]。</p>
           </div>
         </div>
       </details>
@@ -748,10 +983,10 @@
         </summary>
         <div class="step-body">
           <p class="step-desc">
-            実際にご依頼者様にご用意いただいた立ち絵画像・動画・各種アセットへと差し替えを行い、出来栄えや全体のバランスを確認していただきます。
+            実際にご依頼者様にご用意いただいた立ち絵画像・動画・各種アセットへと差し替えを行い、出来栄えや全体のバランスを確認していただきます[cite: 18]。
           </p>
           <div class="note-box">
-            <p>※素材がすでに揃っている場合は、制作開始段階（STEP 2）から実際の画像にして進めても大丈夫です。</p>
+            <p>※素材がすでに揃っている場合は、制作開始段階（STEP 2）から実際の画像にして進めても大丈夫です[cite: 18]。</p>
           </div>
         </div>
       </details>
@@ -770,11 +1005,11 @@
         </summary>
         <div class="step-body">
           <p class="step-desc">
-            ブラッシュアップを重ね、ご依頼者様の満足いく形へと丁寧に仕上げていきます。
+            ブラッシュアップを重ね、ご依頼者様の満足いく形へと丁寧に仕上げていきます[cite: 18]。
           </p>
           <div class="note-box">
-            <p>※遠慮なく気になるところはお伝えください！<br>
-            唯一無二のサイトへ仕上げるため妥協はいたしません。仕組み上の制限がない限り、可能な限り柔軟に対応いたします。</p>
+            <p>※遠慮なく気になるところはお伝えください！[cite: 18]<br>
+            唯一無二のサイトへ仕上げるため妥協はいたしません[cite: 18]。仕組み上の制限がない限り、可能な限り柔軟に対応いたします[cite: 18]。</p>
           </div>
         </div>
       </details>
@@ -793,10 +1028,10 @@
         </summary>
         <div class="step-body">
           <p class="step-desc">
-            最終チェックをしていただき、問題がなければ私のアカウントを作業者から削除し、お渡し完了となります。
+            最終チェックをしていただき、問題がなければ私のアカウントを作業者から削除し、お渡し完了となります[cite: 18]。
           </p>
           <div class="note-box">
-            <p>※作業アカウントの削除などのやり方もマニュアルにてしっかりお伝えします。</p>
+            <p>※作業アカウントの削除などのやり方もマニュアルにてしっかりお伝えします[cite: 18]。</p>
           </div>
         </div>
       </details>
@@ -809,18 +1044,18 @@
     <div>
       <h3 class="support-title">ご依頼時のサポート・同席対応について</h3>
       <p class="support-desc">
-        いくつかご依頼者様の方で行っていただく初期手順がありますが、すべて必要に応じて丁寧にお教えいたします。<br>
-        必要であれば <span class="highlight">Discordにて画面共有をしながらの同席サポート</span> でも対応可能ですので、設定に不安のある方でも安心してご相談ください。
+        いくつかご依頼者様の方で行っていただく初期手順がありますが、すべて必要に応じて丁寧にお教えいたします[cite: 18]。<br>
+        必要であれば <span class="highlight">Discordにて画面共有をしながらの同席サポート</span> でも対応可能ですので、設定に不安のある方でも安心してご相談ください[cite: 18]。
       </p>
     </div>
   </div>
 
   <!-- =========================================
-       セクション2: Q&A
+       セクション3: Q&A
        ========================================= -->
-  <div class="section-header" style="margin-top: 56px;">
+  <div class="section-header" style="margin-top: 56px;" id="sec-faq">
     <h2 class="section-title">よくあるご質問（Q&amp;A）</h2>
-    <p class="section-desc">無料運用の理由やセキュリティ、日々の運用方法について回答しています。</p>
+    <p class="section-desc">無料運用の理由やセキュリティ、日々の運用方法について回答しています[cite: 18]。</p>
   </div>
 
   <div class="qa-list">
@@ -834,7 +1069,7 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="qa-answer">
-        <p>現在、制作実績の蓄積およびポートフォリオの充実を目的として活動しているためです。無料であっても手抜きは一切なく、実際の有料案件と同等以上のセキュリティ・品質管理・丁寧なやり取りを徹底して制作いたします。</p>
+        <p>現在、制作実績の蓄積およびポートフォリオの充実を目的として活動しているためです[cite: 18]。無料であっても手抜きは一切なく、実際の有料案件と同等以上のセキュリティ・品質管理・丁寧なやり取りを徹底して制作いたします[cite: 18]。</p>
       </div>
     </details>
 
@@ -848,12 +1083,12 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="qa-answer">
-        <p>「完成してから思っていたものと違った」という後悔をなくし、依頼者様と「一緒に作り上げる体験」を大切にしたいからです。</p>
+        <p>「完成してから思っていたものと違った」という後悔をなくし、依頼者様と「一緒に作り上げる体験」を大切にしたいからです[cite: 18]。</p>
         <ul class="qa-list-item">
-          <li><strong>気兼ねなく要望を出せる：</strong> 完成後だと「せっかく作ってもらったのに修正をお願いするのは申し訳ない…」と遠慮してしまいがちですが、制作中であれば小さなことでも気軽に要望を出しやすくなります。</li>
-          <li><strong>操作感を事前に確かめられる：</strong> 実際に画面を触って動かしてみることで、言葉だけでは伝えきれなかったニュアンスや機能の過不足に早い段階で気づくことができます。</li>
+          <li><strong>気兼ねなく要望を出せる：</strong> 完成後だと「せっかく作ってもらったのに修正をお願いするのは申し訳ない…」と遠慮してしまいがちですが、制作中であれば小さなことでも気軽に要望を出しやすくなります[cite: 18]。</li>
+          <li><strong>操作感を事前に確かめられる：</strong> 実際に画面を触って動かしてみることで、言葉だけでは伝えきれなかったニュアンスや機能の過不足に早い段階で気づくことができます[cite: 18]。</li>
         </ul>
-        <p>納品されるサイトは、他でもない依頼者様自身のサイトです。ただ完成を待つのではなく、画面が形になっていく変化を一緒に楽しみながら、納得のいくものを作り上げたいと考えています。</p>
+        <p>納品されるサイトは、他でもない依頼者様自身のサイトです[cite: 18]。ただ完成を待つのではなく、画面が形になっていく変化を一緒に楽しみながら、納得のいくものを作り上げたいと考えています[cite: 18]。</p>
       </div>
     </details>
 
@@ -867,8 +1102,8 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="qa-answer">
-        <p>各種サービス（サーバー、コード管理、認証基盤）のアカウント所有権はすべて依頼者様自身に保持していただきます。</p>
-        <p>制作マニュアルをWeb上で公開している通り、作業に必要な最低限の権限のみを一時的にお借りし、クレジットカード情報や契約プランの変更権限には一切触れられない仕組みを採用しています。納品後は手順に従って権限を解除していただくことで、作業者がサイトへアクセスできなくなるため、完全に自社・個人所有の状態で安心して運用していただけます。</p>
+        <p>各種サービス（サーバー、コード管理、認証基盤）のアカウント所有権はすべて依頼者様自身に保持していただきます[cite: 18]。</p>
+        <p>制作マニュアルをWeb上で公開している通り、作業に必要な最低限の権限のみを一時的にお借りし、クレジットカード情報や契約プランの変更権限には一切触れられない仕組みを採用しています[cite: 18]。納品後は手順に従って権限を解除していただくことで、作業者がサイトへアクセスできなくなるため、完全に自社・個人所有の状態で安心して運用していただけます[cite: 18]。</p>
       </div>
     </details>
 
@@ -882,12 +1117,12 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="qa-answer">
-        <p>サイトをお渡しした後の「実際のリアルな活動サイクル」にしっかり伴走したいからです。</p>
+        <p>サイトをお渡しした後の「実際のリアルな活動サイクル」にしっかり伴走したいからです[cite: 18]。</p>
         <ul class="qa-list-item">
-          <li><strong>素材の準備期間：</strong> 新しい立ち絵やキービジュアルをイラストレーター様に依頼してから納品されるまで、通常1ヶ月〜1ヶ月半ほどかかります。</li>
-          <li><strong>企画やイベントの準備：</strong> 記念配信やイベントを企画して準備を進めていると、1ヶ月はあっという間に過ぎてしまいます。</li>
+          <li><strong>素材の準備期間：</strong> 新しい立ち絵やキービジュアルをイラストレーター様に依頼してから納品されるまで、通常1ヶ月〜1ヶ月半ほどかかります[cite: 18]。</li>
+          <li><strong>企画やイベントの準備：</strong> 記念配信やイベントを企画して準備を進めていると、1ヶ月はあっという間に過ぎてしまいます[cite: 18]。</li>
         </ul>
-        <p>「せっかく素材が揃って『さあサイトに組み込んで動かそう！』と思ったときには、すでにサポートが切れていた……」という事態は絶対に避けたいと考えています。3ヶ月あれば、サイトを受け取ってから「このサイトがあるなら、こんな新しい企画をやってみよう！」と動き出しても、十分サポート期間内に実運用・動作確認が可能です。</p>
+        <p>「せっかく素材が揃って『さあサイトに組み込んで動かそう！』と思ったときには、すでにサポートが切れていた……」という事態は絶対に避けたいと考えています[cite: 18]。3ヶ月あれば、サイトを受け取ってから「このサイトがあるなら、こんな新しい企画をやってみよう！」と動き出しても、十分サポート期間内に実運用・動作確認が可能です[cite: 18]。</p>
       </div>
     </details>
 
@@ -901,8 +1136,8 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="qa-answer">
-        <p>非エンジニアの方でも直感的に設定できるよう設計しています。管理画面から画像を直接アップロードできるだけでなく、すでにお使いの「Googleドライブ」の共有URLをそのまま貼り付けるだけでも利用可能です。</p>
-        <p>共有リンクを貼るだけでサイト表示用URLへ自動変換されるため、「大切な元データは自分のGoogleドライブで安全に管理しておきたい」という方でも安心してお使いいただけます。</p>
+        <p>非エンジニアの方でも直感的に設定できるよう設計しています[cite: 18]。管理画面から画像を直接アップロードできるだけでなく、すでにお使いの「Googleドライブ」の共有URLをそのまま貼り付けるだけでも利用可能です[cite: 18]。</p>
+        <p>共有リンクを貼るだけでサイト表示用URLへ自動変換されるため、「大切な元データは自分のGoogleドライブで安全に管理しておきたい」という方でも安心してお使いいただけます[cite: 18]。</p>
       </div>
     </details>
 
@@ -916,11 +1151,11 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="qa-answer">
-        <p>各サービスに個別にログインしなくても、専用の管理画面ひとつで現在のシステム状態（サーバー稼働状況、デプロイ履歴、容量など）が一目で確認できるようになっています。</p>
-        <p>面倒な設定値や接続キー（GitHub PATやFirebase設定）も管理画面からいつでも確認・更新でき、非エンジニアの方でも迷わず運用できる設計にしています。</p>
+        <p>各サービスに個別にログインしなくても、専用の管理画面ひとつで現在のシステム状態（サーバー稼働状況、デプロイ履歴、容量など）が一目で確認できるようになっています[cite: 18]。</p>
+        <p>面倒な設定値や接続キー（GitHub PATやFirebase設定）も管理画面からいつでも確認・更新でき、非エンジニアの方でも迷わず運用できる設計にしています[cite: 18]。</p>
         <div class="note-box">
-          サイトの基本構造そのものを大幅に改造したり、インフラの根幹に関わる設定を変更・解約するような特殊な場合を除き、<strong>日常の活動運用に必要な操作はすべて専用の管理画面ひとつで完結</strong>します。<br>
-          （各種サービスを連携させる最初の初期設定だけはお手伝いが必要になりますが、丁寧にサポートいたしますのでご安心ください）
+          サイトの基本構造そのものを大幅に改造したり、インフラの根幹に関わる設定を変更・解約するような特殊な場合を除き、<strong>日常の活動運用に必要な操作はすべて専用の管理画面ひとつで完結</strong>します[cite: 18]。<br>
+          （各種サービスを連携させる最初の初期設定だけはお手伝いが必要になりますが、丁寧にサポートいたしますのでご安心ください）[cite: 18]
         </div>
       </div>
     </details>
@@ -935,14 +1170,14 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="qa-answer">
-        <p>はい、管理画面からメンバー追加と詳細な「権限設定（ロール分け）」が可能です。</p>
+        <p>はい、管理画面からメンバー追加と詳細な「権限設定（ロール分け）」が可能です[cite: 18]。</p>
         <ul class="qa-list-item">
-          <li><strong>オーナー（ご本人様）：</strong> すべての操作・設定が可能</li>
-          <li><strong>共同運営者（マネージャー等）：</strong> コンテンツ編集・画像管理全般が可能</li>
-          <li><strong>スタッフ（絵師様・Web担当等）：</strong> スケジュールやギャラリー等の日常更新のみ</li>
-          <li><strong>アシスタント（お知らせ担当アルバイト等）：</strong> お知らせ・告知の投稿・編集のみ</li>
+          <li><strong>オーナー（ご本人様）：</strong> すべての操作・設定が可能[cite: 18]</li>
+          <li><strong>共同運営者（マネージャー等）：</strong> コンテンツ編集・画像管理全般が可能[cite: 18]</li>
+          <li><strong>スタッフ（絵師様・Web担当等）：</strong> スケジュールやギャラリー等の日常更新のみ[cite: 18]</li>
+          <li><strong>アシスタント（お知らせ担当アルバイト等）：</strong> お知らせ・告知の投稿・編集のみ[cite: 18]</li>
         </ul>
-        <p>スタッフやお手伝いの方に「プロフィールや基本設定、メンバー管理など大事な部分を誤って変更される心配」がなく、必要な作業権限だけを安全にお渡しいただけます。</p>
+        <p>スタッフやお手伝いの方に「プロフィールや基本設定、メンバー管理など大事な部分を誤って変更される心配」がなく、必要な作業権限だけを安全にお渡しいただけます[cite: 18]。</p>
       </div>
     </details>
 
@@ -956,18 +1191,18 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="qa-answer">
-        <p>完全にデータを引き継いでスムーズに移行できる設計にしています。管理画面からいつでも全データ（D1 SQL / JSON）をワンクリックでエクスポート可能です。</p>
-        <p>リポジトリ構成や設定ファイル（YAML）も標準的かつ綺麗に整理されているため、将来別のエンジニア様や制作会社様に引き継ぐ際も、データを手元に残したまま安心してバトンタッチしていただけます。</p>
+        <p>完全にデータを引き継いでスムーズに移行できる設計にしています[cite: 18]。管理画面からいつでも全データ（D1 SQL / JSON）をワンクリックでエクスポート可能です[cite: 18]。</p>
+        <p>リポジトリ構成や設定ファイル（YAML）も標準的かつ綺麗に整理されているため、将来別のエンジニア様や制作会社様に引き継ぐ際も、データを手元に残したまま安心してバトンタッチしていただけます[cite: 18]。</p>
         <div class="note-box">
-          今回作成する完全無料構成には無料枠の制限があります。（基本的に通常の個人活動に際してこの制限に引っかかることはほぼありません）<br>
+          今回作成する完全無料構成には無料枠の制限があります[cite: 18]。（基本的に通常の個人活動に際してこの制限に引っかかることはほぼありません）[cite: 18]<br>
           <br>
-          ですが、コード管理やドキュメント公開に利用している<strong>GitHub Pages等の利用規約では「ページ内での商用決済・直接取引の処理や、クレジットカード番号等の機密情報の取り扱い」が禁止</strong>されています。 （※BOOTHなどの外部ECサイトへリンクを飛ばして購入してもらう形であれば、規約上まったく問題ありません）<br>
+          ですが、コード管理やドキュメント公開に利用している<strong>GitHub Pages等の利用規約では「ページ内での商用決済・直接取引の処理や、クレジットカード番号等の機密情報の取り扱い」が禁止</strong>されています[cite: 18]。 （※BOOTHなどの外部ECサイトへリンクを飛ばして購入してもらう形であれば、規約上まったく問題ありません）[cite: 18]<br>
           <br>
-          また、サイト内で直接グッズ決済を行ったり、ファンクラブのように個人情報や決済方法を登録・保持する会員システムを構築する場合、<strong>厳格なセキュリティ基準や個人情報保護への対応が必要となり、無料枠のエッジ構成単体で安全に運用することはできません。</strong><br>
+          また、サイト内で直接グッズ決済を行ったり、ファンクラブのように個人情報や決済方法を登録・保持する会員システムを構築する場合、<strong>厳格なセキュリティ基準や個人情報保護への対応が必要となり、無料枠のエッジ構成単体で安全に運用することはできません。</strong>[cite: 18]<br>
           <br>
-          今後、活動がさらに拡大して「企業勢や超大型個人勢のように、グッズ販売や有料ファンクラブを含めたすべてを1つの独自サイト内で完結させたい」となった場合は、専門のEC/ファンクラブ専用プラットフォームや、大規模向けの有料サーバー環境への移行がどうしても必要になります。<br>
+          今後、活動がさらに拡大して「企業勢や超大型個人勢のように、グッズ販売や有料ファンクラブを含めたすべてを1つの独自サイト内で完結させたい」となった場合は、専門のEC/ファンクラブ専用プラットフォームや、大規模向けの有料サーバー環境への移行がどうしても必要になります[cite: 18]。<br>
           <br>
-          そのため、「せっかく作ってもらったのに」「今までお世話になったのに」と移行することを申し訳なく思う必要は全くありません！ むしろ、そこに至るまでこのサイトを足場として使っていただき、活動の支えになれていたなら、開発者としてそれ以上に喜ばしいことはありません。 依頼者様がどんどん活動を拡大し、大きく羽ばたいていくことを心より願っております。
+          そのため、「せっかく作ってもらったのに」「今までお世話になったのに」と移行することを申し訳なく思う必要は全くありません！[cite: 18] むしろ、そこに至るまでこのサイトを足場として使っていただき、活動の支えになれていたなら、開発者としてそれ以上に喜ばしいことはありません[cite: 18]。 依頼者様がどんどん活動を拡大し、大きく羽ばたいていくことを心より願っております[cite: 18]。
         </div>
       </div>
     </details>
@@ -982,13 +1217,13 @@
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="qa-answer">
-        <p>リスナー様のスマートフォンのホーム画面に、本物のスマホアプリのようにアイコンを配置できる機能です。</p>
-        <p>さらに本システムでは、管理画面からいつでもアプリアイコンの着せ替えが可能です。</p>
+        <p>リスナー様のスマートフォンのホーム画面に、本物のスマホアプリのようにアイコンを配置できる機能です[cite: 18]。</p>
+        <p>さらに本システムでは、管理画面からいつでもアプリアイコンの着せ替えが可能です[cite: 18]。</p>
         <ul class="qa-list-item">
-          <li><strong>周年記念や季節イベントに連動：</strong> 「1周年記念仕様」や「水着・お正月衣装」など、イベントに合わせてアイコンを切り替えてファンと一緒に盛り上がることができます。</li>
-          <li><strong>アプリアップデートのような体験：</strong> 管理画面でアイコンを更新すると、リスナー様がアプリを開いた際に「新しいアイコンがリリースされました！」とポップアップ通知が届き、ワンタップで最新デザインに更新していただけます。</li>
+          <li><strong>周年記念や季節イベントに連動：</strong> 「1周年記念仕様」や「水着・お正月衣装」など、イベントに合わせてアイコンを切り替えてファンと一緒に盛り上がることができます[cite: 18]。</li>
+          <li><strong>アプリアップデートのような体験：</strong> 管理画面でアイコンを更新すると、リスナー様がアプリを開いた際に「新しいアイコンがリリースされました！」とポップアップ通知が届き、ワンタップで最新デザインに更新していただけます[cite: 18]。</li>
         </ul>
-        <p>単なるWebサイトの枠を超えて、まるで「自分専用のスマホゲーム」をファンに届けるような特別なファン体験を作ることができます。</p>
+        <p>単なるWebサイトの枠を超えて、まるで「自分専用のスマホゲーム」をファンに届けるような特別なファン体験を作ることができます[cite: 18]。</p>
       </div>
     </details>
   </div>
