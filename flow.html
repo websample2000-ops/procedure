@@ -737,6 +737,12 @@
       </div>
     </div>
 
+    <div class="note-box">
+      <p>※今回完全無料のため、ライブラリ構造はGitHub+Googleドライブ(または、ご自身でお持ちのオンラインストレージ)の形をとっています</p>
+      <p>※すべてのアセットをライブラリの一元管理したい場合、CloudflareのR2というサービス機能がございますが注意点もありますので気になる方はご相談いただければと思います。</p>
+    </div>
+    
+
     <!-- リンクボタン（CTA） -->
     <div class="cta-area">
       <a href="https://lpwebsample.pages.dev/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
@@ -822,12 +828,16 @@
         </div>
 
         <div class="spec-sub-service">
-          <div class="spec-sub-title">Cloudflare R2（オブジェクトストレージ / 画像保管）</div>
+          <div class="spec-sub-title">Cloudflare R2（オブジェクトストレージ / 画像保管）<strong>※利用時のみ</strong> </div>
           <ul class="spec-items">
             <li><strong>ストレージ容量：</strong> 10GB/月</li>
             <li><strong>クラスA操作（書き込み・一覧取得など）：</strong> 100万回/月</li>
             <li><strong>クラスB操作（読み取り・画像表示など）：</strong> 1,000万回/月</li>
             <li><strong>エグレス（下り転送量）：</strong> 完全無料（0円） ※AWS S3等と異なり転送量課金が一切ありません</li>
+            <div class="note-box">
+              ただし、10GBを超えると従量課金（$0.015/GB）が発生します。（意図的に容量の大きいファイルをアップロードしなければ個人活動の利用で超えることはほぼないです。）
+              また、利用にあたってクレジットカードの登録が必要になりますので、R2ご希望の場合は相談していただければと思います（クレジット情報やプラン課金を開発側で行うことはできない仕組みにはなってますが注意点もあります。）
+            </div>
           </ul>
         </div>
       </div>
@@ -882,17 +892,6 @@
           <ul class="spec-items">
             <li><strong>月間アクティブユーザー（MAU）：</strong> 電話認証を除く一般的な認証（Googleログイン、メール等）は実質無制限（50,000人/月まで無料、それを超えても標準プロバイダは無料枠内）</li>
             <li>※管理者やスタッフ数名が管理画面にログインするだけの用途であれば、上限を気にする必要は全くありません。</li>
-          </ul>
-        </div>
-
-        <div class="spec-sub-service">
-          <div class="spec-sub-title">Cloud Storage for Firebase（仮にStorageを使う場合）</div>
-          <ul class="spec-items">
-            <li><strong>保存容量：</strong> 5GB</li>
-            <li><strong>ダウンロード転送量：</strong> 1GB/日</li>
-            <li><strong>アップロード操作：</strong> 20,000回/日</li>
-            <li><strong>ダウンロード操作：</strong> 50,000回/日</li>
-            <li>※画像保存をCloudflare R2に集約する場合は、この制限も回避できます。</li>
           </ul>
         </div>
       </div>
