@@ -319,6 +319,62 @@
     </div>
   </article>
 
+  <!-- 3. CloudflareとGitHubの連携 -->
+  <article class="service-card">
+    <div class="service-header">
+      <span class="badge cf">連携</span>
+      <h2 class="service-title">3. CloudflareとGitHubの連携</h2>
+    </div>
+
+    <div class="step-section">
+      <h3 class="step-title">① GitHubのbranchの生成</h3>
+      <ol>
+        <li><a href="https://github.com" target="_blank" rel="noopener">GitHubのリポジトリ</a> を開きます。（画像の画面が開かない場合、左側の「Top repositories」に作成したリポジトリが表示されているので選択で遷移できます）</li>
+        <li>右上タブの <strong>Code</strong> を選択し、<strong>creating a new file</strong> を選択します。</li>
+        <img class="img" src="./assets/連携1.png" alt="連携1">
+        <br>
+        <li>ファイル名に <strong>index.html</strong> と入力し、Editに <strong>text</strong> などの任意の文字を入力して <strong>Commit changes</strong> を選択します。</li>
+        <img class="img" src="./assets/連携2.png" alt="連携2">
+        <br>
+        <li>表示されるダイアログは何も変更をせず <strong>Commit changes</strong> を選択します。</li>
+        <img class="img" src="./assets/連携3.png" alt="連携3">
+      </ol>
+    </div>
+
+    <div class="step-section" style="border: none; border-top: 1px solid var(--border); margin: 24px 0;">
+      <br>
+      <h3 class="step-title">② GitHub連携</h3>
+      <ol>
+        <li><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">Cloudflare ダッシュボード</a> にログインします。</li>
+        <li>左側メニューの <strong>「Compute」</strong> → <strong>「Worksrd & pages」</strong> を開き、画面右上の <strong>Create application</strong> を選択します。</li>
+        <img class="img" src="./assets/連携4.png" alt="連携4">
+        <br>
+        <li><strong>「Continue to Pages」</strong> をクリックします。</li>
+        <img class="img" src="./assets/連携5.png" alt="連携5">
+        <br>
+        <li><strong>「Get started」</strong> をクリックします。</li>
+        <img class="img" src="./assets/連携6.png" alt="連携6">
+        <br>
+        <li><strong>「Connect GitHub」</strong> をクリックします。</li>
+        <img class="img" src="./assets/連携7.png" alt="連携7">
+        <br>
+        <li><strong>Install & Authorize</strong> を選択し、<strong>Verify via email</strong> をクリックします。</li>
+        <li>GitHubアカウント作成時に使用したメールアドレスに数字の認証コードが送られてくるので、コードを入力して <strong>Verify</strong> をクリックします。</li>
+        <img class="img" src="./assets/連携8.png" alt="連携8">
+        <br>
+        <li>画像の画面に戻ってくるので <strong>GitHub account</strong> に間違いないことを確認し、表示されている <strong>リポジトリ名</strong> を選択（選択すると青いチェックマークが付きます）して <strong>Begin setup</strong> をクリックします。</li>
+        <img class="img" src="./assets/連携9.png" alt="連携9">
+        <br>
+        <li><strong>Project name</strong> を入力し、<strong>Production branch</strong> が「main」になっていることを確認して <strong>Save and Deploy</strong> をクリックします。</li>
+          <div class="note">「Project name」がサイトのURL【https://<strong>[Project name]</strong>.pages.dev】になります。<br>※既に使われているプロジェクト名の場合、プロジェクト名は入力した名称になりますがURLは[Project name]の後ろにランダム値が自動で入ります。</div>
+        <img class="img" src="./assets/連携10.png" alt="連携10">
+        <br>
+        <li><strong>Success! Your project is deployed to Region: Earth</strong> と表示されたページに切り替われば連携完了になります。（この画面が表示される前にビルド画面が表示されますが待っていればこの画面に切り替わります）</li>
+          <div class="note">You can preview your project at の後に表示されるURLをメモ（またはコピー）しておいてください。<br>次のFirebaseのドメイン登録で必要になります。</div>
+        <img class="img" src="./assets/連携11.png" alt="連携11">
+      </ol>
+    </div>
+
   <!-- 3. Firebase -->
   <article class="service-card">
     <div class="service-header">
@@ -392,7 +448,6 @@
     <div class="step-section" style="border: none; border-top: 1px solid var(--border); margin: 24px 0;">
       <br>
       <h3 class="step-title">③ 承認済みドメインの追加</h3>
-        <div class="note">※この手順は私がサイトのドメイン作成後、ドメインをお伝えするのでそのタイミングで行ってください。</div>
       <ol>
         <li><strong>「セキュリティ」</strong> → <strong>「Authentication」</strong> を選択します。</li>
         <img class="img" src="./assets/画像26.png" alt="画像26">
@@ -410,6 +465,7 @@
         <img class="img" src="./assets/画像31.png" alt="画像31">
         <br>
         <li><strong>「ドメインの追加」</strong> を選択し、表示されるダイアログにGoogle認証を使用する <strong>「ドメイン」</strong> を入力し、<strong>「追加」</strong> します。</li>
+          <div class="note">「ドメイン」は先ほどCloudflareとGitHub連携の最後の手順で表示されたURLになります。<br>https://<strong>[Project name]</strong>.pages.dev　のURLになります。</div>
         <img class="img" src="./assets/画像30.png" alt="画像30">
       </ol>
     </div>
